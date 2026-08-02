@@ -89,7 +89,7 @@ class ResponsiveScaffold extends StatelessWidget {
   Widget _buildMobileLayout(BuildContext context) {
     return Scaffold(
       appBar: title != null ? AppBar(title: Text(title!)) : null,
-      body: body,
+      body: SafeArea(child: body),
       bottomNavigationBar: NavigationBar(
         selectedIndex: currentIndex,
         onDestinationSelected: onDestinationSelected,
@@ -137,7 +137,7 @@ class ResponsiveScaffold extends StatelessWidget {
                 .toList(),
           ),
           VerticalDivider(thickness: 1, width: 1, color: theme.dividerColor),
-          Expanded(child: body),
+          Expanded(child: SafeArea(child: body)),
         ],
       ),
       floatingActionButton: floatingActionButton,
