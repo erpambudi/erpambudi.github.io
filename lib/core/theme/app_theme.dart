@@ -129,6 +129,48 @@ class AppTheme {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         side: BorderSide.none,
       ),
+      navigationBarTheme: NavigationBarThemeData(
+        elevation: 0,
+        height: 64,
+        backgroundColor: Colors.white,
+        indicatorColor: AppColors.primaryLight,
+        surfaceTintColor: Colors.transparent,
+        labelTextStyle: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return const TextStyle(
+              fontFamily: _fontFamily,
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: AppColors.primary,
+            );
+          }
+          return const TextStyle(
+            fontFamily: _fontFamily,
+            fontSize: 12,
+            fontWeight: FontWeight.w400,
+            color: AppColors.textLight,
+          );
+        }),
+      ),
+      navigationRailTheme: NavigationRailThemeData(
+        elevation: 0,
+        indicatorColor: AppColors.primaryLight,
+        backgroundColor: Colors.white,
+        selectedIconTheme: const IconThemeData(color: AppColors.primary),
+        unselectedIconTheme: const IconThemeData(color: AppColors.textLight),
+        selectedLabelTextStyle: const TextStyle(
+          fontFamily: _fontFamily,
+          fontSize: 12,
+          fontWeight: FontWeight.w600,
+          color: AppColors.primary,
+        ),
+        unselectedLabelTextStyle: const TextStyle(
+          fontFamily: _fontFamily,
+          fontSize: 12,
+          fontWeight: FontWeight.w400,
+          color: AppColors.textLight,
+        ),
+      ),
     );
   }
 }

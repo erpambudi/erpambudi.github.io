@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/theme/typography_extension.dart';
-import '../../../../core/widgets/buttons/custom_button.dart';
-import '../../../../core/widgets/inputs/custom_text_field.dart';
+
+import '../../../../core/widgets/responsive/responsive_builder.dart';
 import '../../../../core/widgets/snackbar/app_snackbar.dart';
 import '../cubit/auth_cubit.dart';
 import '../cubit/auth_state.dart';
+import '../layouts/login_desktop_layout.dart';
+import '../layouts/login_mobile_layout.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -51,74 +52,20 @@ class _LoginPageState extends State<LoginPage> {
         builder: (context, state) {
           final isLoading = state is AuthLoadingState;
 
-          return SafeArea(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(24.0),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const SizedBox(height: 60),
-                    Icon(
-                      Icons.flutter_dash,
-                      size: 80,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    const SizedBox(height: 32),
-                    Text(
-                      'Selamat Datang',
-                      style: context.headlineMedium,
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Silakan login untuk melanjutkan',
-                      style: context.bodyMedium,
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 48),
-                    CustomTextField(
-                      label: 'Email',
-                      hint: 'Masukkan email Anda',
-                      controller: _emailController,
-                      keyboardType: TextInputType.emailAddress,
-                      prefixIcon: Icons.email_outlined,
-                      enabled: !isLoading,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Email tidak boleh kosong';
-                        }
-                        if (!value.contains('@')) {
-                          return 'Format email tidak valid';
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 20),
-                    CustomTextField(
-                      label: 'Password',
-                      hint: 'Masukkan password Anda',
-                      controller: _passwordController,
-                      obscureText: true,
-                      prefixIcon: Icons.lock_outline,
-                      enabled: !isLoading,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Password tidak boleh kosong';
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 40),
-                    CustomButton(
-                      text: 'Login',
-                      onPressed: _onLoginPressed,
-                      isLoading: isLoading,
-                    ),
-                  ],
-                ),
-              ),
+          return ResponsiveBuilder(
+            mobile: (context, constraints) => LoginMobileLayout(
+              formKey: _formKey,
+              emailController: _emailController,
+              passwordController: _passwordController,
+              isLoading: isLoading,
+              onLoginPressed: _onLoginPressed,
+            ),
+            desktop: (context, constraints) => LoginDesktopLayout(
+              formKey: _formKey,
+              emailController: _emailController,
+              passwordController: _passwordController,
+              isLoading: isLoading,
+              onLoginPressed: _onLoginPressed,
             ),
           );
         },
