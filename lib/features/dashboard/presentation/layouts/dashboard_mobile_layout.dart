@@ -55,7 +55,7 @@ class DashboardMobileLayout extends StatelessWidget {
               crossAxisCount: 2,
               crossAxisSpacing: context.spacing,
               mainAxisSpacing: context.spacing,
-              childAspectRatio: 1.4,
+              mainAxisExtent: 136, // Fixed height to prevent overflow
             ),
             itemCount: stats.length,
             itemBuilder: (context, index) {
