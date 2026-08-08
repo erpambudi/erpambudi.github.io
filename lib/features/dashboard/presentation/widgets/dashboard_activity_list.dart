@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/typography_extension.dart';
+import '../../../../core/utils/l10n_extension.dart';
 
 class ActivityItemData {
   final IconData icon;
@@ -25,31 +26,31 @@ class DashboardActivityList extends StatelessWidget {
       ActivityItemData(
         icon: Icons.add_circle_rounded,
         title: 'Order baru #1234',
-        subtitle: '2 menit yang lalu',
+        subtitle: context.l10n.twoMinutesAgo,
         color: AppColors.statusDiterima,
       ),
       ActivityItemData(
         icon: Icons.local_laundry_service_rounded,
         title: 'Order #1230 sedang dicuci',
-        subtitle: '15 menit yang lalu',
+        subtitle: context.l10n.fifteenMinutesAgo,
         color: AppColors.statusDicuci,
       ),
       ActivityItemData(
         icon: Icons.check_circle_rounded,
         title: 'Order #1228 selesai',
-        subtitle: '1 jam yang lalu',
+        subtitle: context.l10n.oneHourAgo,
         color: AppColors.statusSelesai,
       ),
       ActivityItemData(
         icon: Icons.payment_rounded,
         title: 'Pembayaran diterima #1225',
-        subtitle: '2 jam yang lalu',
+        subtitle: context.l10n.twoHoursAgo,
         color: AppColors.statusLunas,
       ),
       ActivityItemData(
         icon: Icons.person_add_rounded,
-        title: 'Pelanggan baru terdaftar',
-        subtitle: '3 jam yang lalu',
+        title: context.l10n.newCustomerRegistered,
+        subtitle: context.l10n.threeHoursAgo,
         color: AppColors.primary,
       ),
     ];
@@ -58,7 +59,7 @@ class DashboardActivityList extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Aktivitas Terbaru',
+          context.l10n.recentActivity,
           style: context.titleLarge.copyWith(fontWeight: FontWeight.w700),
         ),
         const SizedBox(height: 12),

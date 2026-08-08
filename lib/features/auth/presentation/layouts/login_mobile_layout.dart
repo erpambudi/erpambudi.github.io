@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/typography_extension.dart';
+import '../../../../core/utils/l10n_extension.dart';
 import '../../../../core/widgets/buttons/custom_button.dart';
 import '../../../../core/widgets/inputs/custom_text_field.dart';
 
@@ -50,7 +51,7 @@ class LoginMobileLayout extends StatelessWidget {
               ),
               const SizedBox(height: 48),
               CustomTextField(
-                label: 'Email',
+                label: context.l10n.email,
                 hint: 'Masukkan email Anda',
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
@@ -68,7 +69,7 @@ class LoginMobileLayout extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               CustomTextField(
-                label: 'Password',
+                label: context.l10n.password,
                 hint: 'Masukkan password Anda',
                 controller: passwordController,
                 obscureText: true,

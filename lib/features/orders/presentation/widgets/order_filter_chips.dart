@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/utils/l10n_extension.dart';
 import '../cubit/order_list_cubit.dart';
 
 class OrderFilterChips extends StatelessWidget {
@@ -9,13 +10,13 @@ class OrderFilterChips extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final filters = [
-      {'label': 'Semua', 'value': null},
-      {'label': 'Diterima', 'value': 'diterima'},
-      {'label': 'Sedang Dicuci', 'value': 'sedang_dicuci'},
-      {'label': 'Sedang Dikeringkan', 'value': 'sedang_dikeringkan'},
-      {'label': 'Sedang Disetrika', 'value': 'sedang_disetrika'},
-      {'label': 'Selesai', 'value': 'selesai'},
-      {'label': 'Sudah Diambil', 'value': 'sudah_diambil'},
+      {'label': context.l10n.all, 'value': null},
+      {'label': context.l10n.received, 'value': 'diterima'},
+      {'label': context.l10n.washing, 'value': 'sedang_dicuci'},
+      {'label': context.l10n.drying, 'value': 'sedang_dikeringkan'},
+      {'label': context.l10n.ironing, 'value': 'sedang_disetrika'},
+      {'label': context.l10n.completed, 'value': 'selesai'},
+      {'label': context.l10n.taken, 'value': 'sudah_diambil'},
     ];
 
     return Container(

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/utils/l10n_extension.dart';
 import '../../core/widgets/responsive/responsive_scaffold.dart';
 import '../../features/auth/presentation/cubit/auth_cubit.dart';
 import '../../features/auth/presentation/cubit/auth_state.dart';
@@ -35,21 +36,21 @@ class AppRouter {
 
   /// Navigation destinations — add new pages here.
   /// Order matters: it determines the display order in navigation.
-  static const List<AppDestination> destinations = [
+  static List<AppDestination> getDestinations(BuildContext context) => [
     AppDestination(
       icon: Icons.dashboard_outlined,
       selectedIcon: Icons.dashboard_rounded,
-      label: 'Dashboard',
+      label: context.l10n.dashboard,
     ),
     AppDestination(
       icon: Icons.receipt_long_outlined,
       selectedIcon: Icons.receipt_long_rounded,
-      label: 'Orders',
+      label: context.l10n.orders,
     ),
     AppDestination(
       icon: Icons.person_outline_rounded,
       selectedIcon: Icons.person_rounded,
-      label: 'Profil',
+      label: context.l10n.profile,
     ),
   ];
 
@@ -150,7 +151,7 @@ class _ScaffoldWithNavigation extends StatelessWidget {
           initialLocation: index == navigationShell.currentIndex,
         );
       },
-      destinations: AppRouter.destinations,
+      destinations: AppRouter.getDestinations(context),
       body: navigationShell,
     );
   }

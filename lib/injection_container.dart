@@ -2,6 +2,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'core/bloc/locale/locale_cubit.dart';
 import 'core/network/api_client.dart';
 import 'core/network/network_info.dart';
 import 'core/network/token_storage.dart';
@@ -57,4 +58,6 @@ Future<void> init() async {
   // 6. Cubits
   sl.registerFactory(() => AuthCubit(repository: sl()));
   sl.registerFactory(() => OrderListCubit(repository: sl()));
+  sl.registerLazySingleton(() => LocaleCubit(prefs: sl()));
 }
+

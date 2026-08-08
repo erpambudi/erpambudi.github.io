@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../theme/app_colors.dart';
+import '../../utils/l10n_extension.dart';
 import '../feedback/empty_state_widget.dart';
 import '../../bloc/pagination/pagination_state.dart';
 
@@ -107,7 +108,7 @@ class _AppPaginatedListViewState<
           }
           return EmptyStateWidget(
             icon: Icons.error_outline_rounded,
-            title: 'Terjadi Kesalahan',
+            title: context.l10n.errorOccurred,
             subtitle: state.errorMessage ?? 'Gagal memuat data',
             buttonText: 'Coba Lagi',
             onButtonPressed: () => (context.read<C>() as dynamic).refresh(),
@@ -118,7 +119,7 @@ class _AppPaginatedListViewState<
           return widget.emptyWidget ??
               EmptyStateWidget(
                 icon: Icons.folder_open_outlined,
-                title: 'Data Kosong',
+                title: context.l10n.emptyData,
                 subtitle: 'Belum ada data untuk ditampilkan.',
                 buttonText: 'Muat Ulang',
                 onButtonPressed: () => (context.read<C>() as dynamic).refresh(),

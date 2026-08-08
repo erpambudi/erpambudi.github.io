@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../constants/breakpoints.dart';
 import '../../theme/app_colors.dart';
+import '../../utils/l10n_extension.dart';
 
 /// A navigation destination for the responsive scaffold.
 class AppDestination {
@@ -184,7 +185,7 @@ class ResponsiveScaffold extends StatelessWidget {
                       const SizedBox(width: 12),
                       Expanded(
                         child: Text(
-                          'App Template',
+                          context.l10n.appTitle,
                           style: theme.textTheme.titleMedium?.copyWith(
                             fontWeight: FontWeight.w700,
                           ),

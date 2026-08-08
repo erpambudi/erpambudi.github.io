@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/typography_extension.dart';
 import '../../../../core/utils/currency_formatter.dart';
 import '../../../../core/utils/date_formatter.dart';
+import '../../../../core/utils/l10n_extension.dart';
 import '../../../../core/widgets/badges/status_badge.dart';
 import '../../domain/entities/order.dart';
 
@@ -67,7 +68,7 @@ class OrderCard extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Total Harga', style: context.bodySmall),
+                      Text(context.l10n.totalPrice, style: context.bodySmall),
                       Text(
                         CurrencyFormatter.format(order.totalAmount),
                         style: context.titleMedium.copyWith(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/typography_extension.dart';
+import '../../../../core/utils/l10n_extension.dart';
 import '../../../../core/widgets/buttons/custom_button.dart';
 import '../../../../core/widgets/inputs/custom_text_field.dart';
 
@@ -91,7 +92,7 @@ class LoginDesktopLayout extends StatelessWidget {
                         ),
                         const SizedBox(height: 48),
                         CustomTextField(
-                          label: 'Email',
+                          label: context.l10n.email,
                           hint: 'Masukkan email Anda',
                           controller: emailController,
                           keyboardType: TextInputType.emailAddress,
@@ -109,7 +110,7 @@ class LoginDesktopLayout extends StatelessWidget {
                         ),
                         const SizedBox(height: 24),
                         CustomTextField(
-                          label: 'Password',
+                          label: context.l10n.password,
                           hint: 'Masukkan password Anda',
                           controller: passwordController,
                           obscureText: true,
@@ -124,7 +125,7 @@ class LoginDesktopLayout extends StatelessWidget {
                         ),
                         const SizedBox(height: 48),
                         CustomButton(
-                          text: 'Login',
+                          text: context.l10n.login,
                           onPressed: onLoginPressed,
                           isLoading: isLoading,
                         ),

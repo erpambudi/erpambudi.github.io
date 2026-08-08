@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
+import 'app_localizations_en.dart';
 import 'app_localizations_id.dart';
 
 // ignore_for_file: type=lint
@@ -92,7 +93,10 @@ abstract class AppLocalizations {
       ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[Locale('id')];
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale('en'),
+    Locale('id'),
+  ];
 
   /// No description provided for @appTitle.
   ///
@@ -105,6 +109,234 @@ abstract class AppLocalizations {
   /// In id, this message translates to:
   /// **'Masuk'**
   String get login;
+
+  /// No description provided for @email.
+  ///
+  /// In id, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @password.
+  ///
+  /// In id, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @dashboard.
+  ///
+  /// In id, this message translates to:
+  /// **'Dashboard'**
+  String get dashboard;
+
+  /// No description provided for @orders.
+  ///
+  /// In id, this message translates to:
+  /// **'Pesanan'**
+  String get orders;
+
+  /// No description provided for @profile.
+  ///
+  /// In id, this message translates to:
+  /// **'Profil'**
+  String get profile;
+
+  /// No description provided for @totalOrder.
+  ///
+  /// In id, this message translates to:
+  /// **'Total Order'**
+  String get totalOrder;
+
+  /// No description provided for @inProgress.
+  ///
+  /// In id, this message translates to:
+  /// **'Dalam Proses'**
+  String get inProgress;
+
+  /// No description provided for @completed.
+  ///
+  /// In id, this message translates to:
+  /// **'Selesai'**
+  String get completed;
+
+  /// No description provided for @revenue.
+  ///
+  /// In id, this message translates to:
+  /// **'Pendapatan'**
+  String get revenue;
+
+  /// No description provided for @newCustomerRegistered.
+  ///
+  /// In id, this message translates to:
+  /// **'Pelanggan baru terdaftar'**
+  String get newCustomerRegistered;
+
+  /// No description provided for @twoMinutesAgo.
+  ///
+  /// In id, this message translates to:
+  /// **'2 menit yang lalu'**
+  String get twoMinutesAgo;
+
+  /// No description provided for @fifteenMinutesAgo.
+  ///
+  /// In id, this message translates to:
+  /// **'15 menit yang lalu'**
+  String get fifteenMinutesAgo;
+
+  /// No description provided for @oneHourAgo.
+  ///
+  /// In id, this message translates to:
+  /// **'1 jam yang lalu'**
+  String get oneHourAgo;
+
+  /// No description provided for @twoHoursAgo.
+  ///
+  /// In id, this message translates to:
+  /// **'2 jam yang lalu'**
+  String get twoHoursAgo;
+
+  /// No description provided for @threeHoursAgo.
+  ///
+  /// In id, this message translates to:
+  /// **'3 jam yang lalu'**
+  String get threeHoursAgo;
+
+  /// No description provided for @recentActivity.
+  ///
+  /// In id, this message translates to:
+  /// **'Aktivitas Terbaru'**
+  String get recentActivity;
+
+  /// No description provided for @orderList.
+  ///
+  /// In id, this message translates to:
+  /// **'Daftar Pesanan'**
+  String get orderList;
+
+  /// No description provided for @all.
+  ///
+  /// In id, this message translates to:
+  /// **'Semua'**
+  String get all;
+
+  /// No description provided for @received.
+  ///
+  /// In id, this message translates to:
+  /// **'Diterima'**
+  String get received;
+
+  /// No description provided for @washing.
+  ///
+  /// In id, this message translates to:
+  /// **'Sedang Dicuci'**
+  String get washing;
+
+  /// No description provided for @drying.
+  ///
+  /// In id, this message translates to:
+  /// **'Sedang Dikeringkan'**
+  String get drying;
+
+  /// No description provided for @ironing.
+  ///
+  /// In id, this message translates to:
+  /// **'Sedang Disetrika'**
+  String get ironing;
+
+  /// No description provided for @taken.
+  ///
+  /// In id, this message translates to:
+  /// **'Sudah Diambil'**
+  String get taken;
+
+  /// No description provided for @totalPrice.
+  ///
+  /// In id, this message translates to:
+  /// **'Total Harga'**
+  String get totalPrice;
+
+  /// No description provided for @phone.
+  ///
+  /// In id, this message translates to:
+  /// **'Telepon'**
+  String get phone;
+
+  /// No description provided for @address.
+  ///
+  /// In id, this message translates to:
+  /// **'Alamat'**
+  String get address;
+
+  /// No description provided for @joined.
+  ///
+  /// In id, this message translates to:
+  /// **'Bergabung'**
+  String get joined;
+
+  /// No description provided for @editProfile.
+  ///
+  /// In id, this message translates to:
+  /// **'Edit Profil'**
+  String get editProfile;
+
+  /// No description provided for @changePassword.
+  ///
+  /// In id, this message translates to:
+  /// **'Ubah Password'**
+  String get changePassword;
+
+  /// No description provided for @notifications.
+  ///
+  /// In id, this message translates to:
+  /// **'Notifikasi'**
+  String get notifications;
+
+  /// No description provided for @help.
+  ///
+  /// In id, this message translates to:
+  /// **'Bantuan'**
+  String get help;
+
+  /// No description provided for @logout.
+  ///
+  /// In id, this message translates to:
+  /// **'Keluar'**
+  String get logout;
+
+  /// No description provided for @confirmLogoutTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Konfirmasi Logout'**
+  String get confirmLogoutTitle;
+
+  /// No description provided for @confirmLogoutContent.
+  ///
+  /// In id, this message translates to:
+  /// **'Apakah Anda yakin ingin keluar?'**
+  String get confirmLogoutContent;
+
+  /// No description provided for @cancel.
+  ///
+  /// In id, this message translates to:
+  /// **'Batal'**
+  String get cancel;
+
+  /// No description provided for @errorOccurred.
+  ///
+  /// In id, this message translates to:
+  /// **'Terjadi Kesalahan'**
+  String get errorOccurred;
+
+  /// No description provided for @emptyData.
+  ///
+  /// In id, this message translates to:
+  /// **'Data Kosong'**
+  String get emptyData;
+
+  /// No description provided for @language.
+  ///
+  /// In id, this message translates to:
+  /// **'Bahasa'**
+  String get language;
 }
 
 class _AppLocalizationsDelegate
@@ -118,7 +350,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['id'].contains(locale.languageCode);
+      <String>['en', 'id'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -127,6 +359,8 @@ class _AppLocalizationsDelegate
 AppLocalizations lookupAppLocalizations(Locale locale) {
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
+    case 'en':
+      return AppLocalizationsEn();
     case 'id':
       return AppLocalizationsId();
   }

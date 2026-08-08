@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/typography_extension.dart';
+import '../../../../core/utils/l10n_extension.dart';
 
 class _InfoItem {
   final IconData icon;
@@ -20,19 +21,19 @@ class ProfileInfoSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final infoItems = [
-      const _InfoItem(
+      _InfoItem(
         icon: Icons.phone_rounded,
-        label: 'Telepon',
+        label: context.l10n.phone,
         value: '+62 812 3456 7890',
       ),
-      const _InfoItem(
+      _InfoItem(
         icon: Icons.location_on_rounded,
-        label: 'Alamat',
+        label: context.l10n.address,
         value: 'Jl. Contoh No. 123, Jakarta',
       ),
-      const _InfoItem(
-        icon: Icons.calendar_today_rounded,
-        label: 'Bergabung',
+      _InfoItem(
+        icon: Icons.calendar_month_rounded,
+        label: context.l10n.joined,
         value: '1 Januari 2024',
       ),
     ];

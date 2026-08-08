@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/breakpoints.dart';
+import '../../../../core/utils/l10n_extension.dart';
 import '../../../../core/widgets/list/app_paginated_list_view.dart';
 import '../../domain/entities/order.dart';
 import '../cubit/order_list_cubit.dart';
@@ -14,7 +15,7 @@ class OrderListDesktopLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Daftar Pesanan'),
+        title: Text(context.l10n.orderList),
       ),
       body: Column(
         children: [
