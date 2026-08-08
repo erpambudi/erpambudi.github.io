@@ -7,22 +7,13 @@ import '../widgets/order_card.dart';
 import '../widgets/order_filter_chips.dart';
 
 class OrderListMobileLayout extends StatelessWidget {
-  final VoidCallback onLogout;
-
-  const OrderListMobileLayout({super.key, required this.onLogout});
+  const OrderListMobileLayout({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Daftar Pesanan'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: onLogout,
-            tooltip: 'Logout',
-          ),
-        ],
       ),
       body: Column(
         children: [
