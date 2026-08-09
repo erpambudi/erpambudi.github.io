@@ -127,15 +127,26 @@ class ApiClient {
         final statusCode = error.response?.statusCode;
         final serverMessage = _extractServerMessage(error);
 
-        // 401 Unauthorized — clear token + notify UI (show dialog)
+        // 401 Unauthorized.
+        //
+        // Only treat it as an expired session (clear token + show dialog) when
+        // the failed request actually carried a Bearer token. A 401 on an
+        // unauthenticated request — e.g. wrong password on POST /auth/login or
+        // any credential-validation endpoint — is a normal business error. Let
+        // it surface to the caller as a snackbar instead of a session dialog.
         if (statusCode == 401) {
-          await tokenStorage.deleteToken();
+          final hadAuthToken =
+              error.requestOptions.headers['Authorization'] != null;
 
-          // Trigger the unauthorized callback (e.g. show dialog)
-          // Guard prevents multiple dialogs from concurrent 401 responses
-          if (!_isHandlingUnauthorized && onUnauthorized != null) {
-            _isHandlingUnauthorized = true;
-            onUnauthorized!();
+          if (tokenStorage.hasToken && hadAuthToken) {
+            await tokenStorage.deleteToken();
+
+            // Trigger the unauthorized callback (e.g. show dialog)
+            // Guard prevents multiple dialogs from concurrent 401 responses
+            if (!_isHandlingUnauthorized && onUnauthorized != null) {
+              _isHandlingUnauthorized = true;
+              onUnauthorized!();
+            }
           }
 
           handler.reject(

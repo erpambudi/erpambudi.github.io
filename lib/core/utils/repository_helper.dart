@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 import '../error/exceptions.dart';
 import '../error/failures.dart';
@@ -15,22 +16,31 @@ Future<Either<Failure, T>> executeApiCall<T>({
     try {
       final result = await call();
       return Right(result);
-    } on UnauthorizedException catch (e) {
-      if (onUnauthorized != null) {
-        return await onUnauthorized(e);
-      }
-      return Left(UnauthorizedFailure(message: e.message));
-    } on ServerException catch (e) {
-      return Left(ServerFailure(message: e.message));
-    } on NetworkException catch (e) {
-      if (onNetworkError != null) {
-        return await onNetworkError();
-      }
-      return Left(NetworkFailure(message: e.message));
-    } on ApiTimeoutException catch (e) {
-      return Left(TimeoutFailure(message: e.message));
     } catch (e) {
-      return Left(ServerFailure(message: 'Terjadi kesalahan: $e'));
+      // Dio wraps the app exception (UnauthorizedException, ServerException,
+      // etc.) inside a DioException and rethrows it. Unwrap it first so the
+      // mapping below sees the real exception instead of a generic DioException.
+      final error = e is DioException ? e.error : e;
+
+      if (error is UnauthorizedException) {
+        if (onUnauthorized != null) {
+          return await onUnauthorized(error);
+        }
+        return Left(UnauthorizedFailure(message: error.message));
+      }
+      if (error is ServerException) {
+        return Left(ServerFailure(message: error.message));
+      }
+      if (error is NetworkException) {
+        if (onNetworkError != null) {
+          return await onNetworkError();
+        }
+        return Left(NetworkFailure(message: error.message));
+      }
+      if (error is ApiTimeoutException) {
+        return Left(TimeoutFailure(message: error.message));
+      }
+      return Left(ServerFailure(message: 'Terjadi kesalahan: $error'));
     }
   } else {
     if (onNetworkError != null) {
