@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart' show kIsWeb;
+
 /// Abstraction for checking network connectivity.
 ///
 /// Use this to proactively check whether the device has internet access
@@ -14,9 +16,16 @@ abstract class NetworkInfo {
 ///
 /// Uses a lightweight DNS lookup to `google.com` to verify connectivity.
 /// No additional packages required — uses `dart:io` only.
+///
+/// On **web**, `InternetAddress.lookup` is not supported, so this always
+/// returns `true`. Connectivity errors on web are handled naturally by
+/// HTTP failure responses in the repository layer.
 class NetworkInfoImpl implements NetworkInfo {
   @override
   Future<bool> get isConnected async {
+    // dart:io's InternetAddress is not available on web.
+    if (kIsWeb) return true;
+
     try {
       final result = await InternetAddress.lookup(
         'google.com',
