@@ -14,9 +14,7 @@ class OrderListDesktopLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(context.l10n.orderList),
-      ),
+      appBar: AppBar(title: Text(context.l10n.orderList)),
       body: Column(
         children: [
           Center(

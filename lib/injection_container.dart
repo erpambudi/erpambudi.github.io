@@ -60,4 +60,3 @@ Future<void> init() async {
   sl.registerFactory(() => OrderListCubit(repository: sl()));
   sl.registerLazySingleton(() => LocaleCubit(prefs: sl()));
 }
-

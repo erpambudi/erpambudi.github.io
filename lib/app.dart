@@ -64,10 +64,7 @@ class _MyAppState extends State<MyApp> {
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
-            supportedLocales: const [
-              Locale('id', 'ID'),
-              Locale('en', 'US'),
-            ],
+            supportedLocales: const [Locale('id', 'ID'), Locale('en', 'US')],
             routerConfig: _appRouter.router,
             builder: (context, child) {
               if (FlavorConfig.isDevelopment) {
@@ -89,4 +86,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-

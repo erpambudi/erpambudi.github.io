@@ -124,9 +124,7 @@ class ProfileMenuSection extends StatelessWidget {
         onTap: () => _showLanguageDialog(context),
         trailing: Text(
           _currentLanguageLabel(context),
-          style: context.bodyMedium.copyWith(
-            color: AppColors.textSecondary,
-          ),
+          style: context.bodyMedium.copyWith(color: AppColors.textSecondary),
         ),
       ),
       _MenuItem(
@@ -168,11 +166,9 @@ class ProfileMenuSection extends StatelessWidget {
                 menuItems[i].title,
                 style: context.bodyMedium.copyWith(fontWeight: FontWeight.w500),
               ),
-              trailing: menuItems[i].trailing ??
-                  const Icon(
-                    Icons.chevron_right,
-                    color: AppColors.textLight,
-                  ),
+              trailing:
+                  menuItems[i].trailing ??
+                  const Icon(Icons.chevron_right, color: AppColors.textLight),
               onTap: menuItems[i].onTap ?? () {},
             ),
             if (i < menuItems.length - 1) const Divider(height: 1),
@@ -182,4 +178,3 @@ class ProfileMenuSection extends StatelessWidget {
     );
   }
 }
-

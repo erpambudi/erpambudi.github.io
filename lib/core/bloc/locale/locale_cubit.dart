@@ -9,8 +9,8 @@ class LocaleCubit extends Cubit<Locale> {
   static const _kLocaleKey = 'app_locale';
 
   LocaleCubit({required SharedPreferences prefs})
-      : _prefs = prefs,
-        super(Locale(prefs.getString(_kLocaleKey) ?? 'id'));
+    : _prefs = prefs,
+      super(Locale(prefs.getString(_kLocaleKey) ?? 'id'));
 
   void changeLocale(Locale locale) {
     _prefs.setString(_kLocaleKey, locale.languageCode);

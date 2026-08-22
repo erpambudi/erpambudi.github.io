@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:window_manager/window_manager.dart';
 import 'app.dart';
@@ -9,7 +8,9 @@ import 'injection_container.dart' as di;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  if (CheckPlatform.isWindows || CheckPlatform.isLinux || CheckPlatform.isMacOS) {
+  if (CheckPlatform.isWindows ||
+      CheckPlatform.isLinux ||
+      CheckPlatform.isMacOS) {
     await windowManager.ensureInitialized();
 
     WindowOptions windowOptions = const WindowOptions(

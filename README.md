@@ -84,13 +84,18 @@ lib/
 
 ---
 
-## 📖 Aturan Koding & Konvensi
+## 📖 Aturan Koding & Konvensi (Docs-as-Code)
 
-Demi menjaga kualitas kode (*codebase*), seluruh anggota tim **wajib** mengikuti aturan yang ada di proyek ini.
+Demi menjaga kualitas kode (*codebase*), seluruh anggota tim dan AI Agent **wajib** mengikuti aturan yang ada di proyek ini.
 
-👉 **SILAKAN BACA SELENGKAPNYA DI: [RULES.md](./RULES.md)**
+👉 **Panduan Lengkap & Indeks Aturan: [`AGENTS.md`](./AGENTS.md) & [`.agents/rules/`](./.agents/rules/)**
 
 Aturan tersebut mencakup cara membuat fitur baru, batasan komunikasi antar-layer, penamaan *State*, injeksi *Cubit*, standar *Pagination*, hingga tata cara penulisan komponen *UI*.
+
+Jalankan skrip validasi kepatuhan aturan:
+```bash
+dart run scripts/validate_ai_rules.dart
+```
 
 ---
 *Aplikasi ini dirancang dengan standar kualitas enterprise yang ketat.*

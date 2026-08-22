@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 import '../../../../core/widgets/responsive/responsive_builder.dart';
 import '../../../../core/widgets/snackbar/app_snackbar.dart';
 import '../cubit/auth_cubit.dart';
