@@ -1,28 +1,44 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../constants/app_constants.dart';
 
 /// Secure token storage abstraction.
 ///
 /// Uses [FlutterSecureStorage] to store sensitive auth tokens
-/// in the platform's secure keychain (iOS Keychain / Android Keystore).
+/// in the platform's secure keychain (iOS Keychain / Android Keystore / Web Crypto).
+///
+/// Provides a fallback mechanism to [SharedPreferences] in environments where
+/// [FlutterSecureStorage] is not supported or fails (e.g. Flutter Web on non-HTTPS / insecure context).
 ///
 /// Also maintains an in-memory cache so that token reads can be
 /// performed synchronously after the initial load.
 class TokenStorage {
   final FlutterSecureStorage _secureStorage;
+  final SharedPreferences? _sharedPreferences;
 
   /// In-memory cache of the current token.
   /// Avoids async reads on every API request.
   String? _cachedToken;
 
-  TokenStorage({FlutterSecureStorage? secureStorage})
-    : _secureStorage = secureStorage ?? const FlutterSecureStorage();
+  TokenStorage({
+    FlutterSecureStorage? secureStorage,
+    SharedPreferences? sharedPreferences,
+  }) : _secureStorage = secureStorage ?? const FlutterSecureStorage(),
+       _sharedPreferences = sharedPreferences;
 
-  /// Loads the token from secure storage into the in-memory cache.
+  /// Loads the token from secure storage (or fallback) into the in-memory cache.
   ///
   /// Call this once during app initialization before any API calls.
   Future<void> init() async {
-    _cachedToken = await _secureStorage.read(key: AppConstants.tokenKey);
+    try {
+      _cachedToken = await _secureStorage.read(key: AppConstants.tokenKey);
+    } catch (e) {
+      debugPrint('[TokenStorage] Error reading secure storage: $e');
+      // If secure storage failed (e.g., Web non-HTTPS or corrupted crypto key),
+      // try to recover from SharedPreferences fallback if available.
+      _cachedToken = _sharedPreferences?.getString(AppConstants.tokenKey);
+    }
   }
 
   /// Returns the cached token synchronously.
@@ -33,21 +49,55 @@ class TokenStorage {
   /// Whether a valid token exists.
   bool get hasToken => _cachedToken != null && _cachedToken!.isNotEmpty;
 
-  /// Saves a token to both secure storage and the in-memory cache.
+  /// Saves a token to secure storage. If secure storage fails (e.g. on web non-HTTPS),
+  /// it falls back to saving in sharedPreferences.
   Future<void> saveToken(String token) async {
     _cachedToken = token;
-    await _secureStorage.write(key: AppConstants.tokenKey, value: token);
+    try {
+      await _secureStorage.write(key: AppConstants.tokenKey, value: token);
+    } catch (e) {
+      debugPrint(
+        '[TokenStorage] Error writing to secure storage, falling back to SharedPreferences: $e',
+      );
+      try {
+        await _sharedPreferences?.setString(AppConstants.tokenKey, token);
+      } catch (fallbackError) {
+        debugPrint(
+          '[TokenStorage] Error writing to fallback storage: $fallbackError',
+        );
+      }
+    }
   }
 
-  /// Removes the token from both secure storage and the in-memory cache.
+  /// Removes the token from secure storage, fallback storage, and the in-memory cache.
   Future<void> deleteToken() async {
     _cachedToken = null;
-    await _secureStorage.delete(key: AppConstants.tokenKey);
+    try {
+      await _secureStorage.delete(key: AppConstants.tokenKey);
+    } catch (e) {
+      debugPrint('[TokenStorage] Error deleting from secure storage: $e');
+    }
+
+    try {
+      await _sharedPreferences?.remove(AppConstants.tokenKey);
+    } catch (e) {
+      debugPrint('[TokenStorage] Error deleting from fallback storage: $e');
+    }
   }
 
-  /// Clears all data from secure storage and the cache.
+  /// Clears all data from secure storage, fallback storage, and the cache.
   Future<void> clearAll() async {
     _cachedToken = null;
-    await _secureStorage.deleteAll();
+    try {
+      await _secureStorage.deleteAll();
+    } catch (e) {
+      debugPrint('[TokenStorage] Error clearing secure storage: $e');
+    }
+
+    try {
+      await _sharedPreferences?.remove(AppConstants.tokenKey);
+    } catch (e) {
+      debugPrint('[TokenStorage] Error clearing fallback storage: $e');
+    }
   }
 }

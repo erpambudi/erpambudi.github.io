@@ -21,12 +21,23 @@ Future<void> init() async {
   // 1. External Dependencies
   final sharedPreferences = await SharedPreferences.getInstance();
   sl.registerLazySingleton(() => sharedPreferences);
-  sl.registerLazySingleton(() => const FlutterSecureStorage());
+  sl.registerLazySingleton(
+    () => const FlutterSecureStorage(
+      aOptions: AndroidOptions(),
+      iOptions: IOSOptions(accessibility: KeychainAccessibility.first_unlock),
+      webOptions: WebOptions(
+        dbName: 'mobile_template_vault',
+        publicKey: 'mobile_template_web_key',
+      ),
+    ),
+  );
 
   // 2. Core
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl());
 
-  sl.registerLazySingleton(() => TokenStorage(secureStorage: sl()));
+  sl.registerLazySingleton(
+    () => TokenStorage(secureStorage: sl(), sharedPreferences: sl()),
+  );
 
   // Need to initialize TokenStorage to read from secure storage
   await sl<TokenStorage>().init();
