@@ -8,7 +8,9 @@
             "program": "lib/main_dev.dart",
             "args": [
                 "--flavor",
-                "development"
+                "development",
+                "--web-port=8080",
+                "--web-browser-flag=--user-data-dir=${workspaceFolder}/.dart_tool/chrome_dev_profile"
             ],
             "toolArgs": [
                 "--dart-define-from-file=.env.dev"
@@ -21,7 +23,9 @@
             "program": "lib/main.dart",
             "args": [
                 "--flavor",
-                "production"
+                "production",
+                "--web-port=8080",
+                "--web-browser-flag=--user-data-dir=${workspaceFolder}/.dart_tool/chrome_dev_profile"
             ],
             "toolArgs": [
                 "--dart-define-from-file=.env.prod"

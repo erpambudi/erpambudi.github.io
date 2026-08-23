@@ -35,8 +35,10 @@ class TokenStorage {
       _cachedToken = await _secureStorage.read(key: AppConstants.tokenKey);
     } catch (e) {
       debugPrint('[TokenStorage] Error reading secure storage: $e');
-      // If secure storage failed (e.g., Web non-HTTPS or corrupted crypto key),
-      // try to recover from SharedPreferences fallback if available.
+    }
+
+    // If secure storage returned null (or threw error), check fallback storage
+    if (_cachedToken == null || _cachedToken!.isEmpty) {
       _cachedToken = _sharedPreferences?.getString(AppConstants.tokenKey);
     }
   }
