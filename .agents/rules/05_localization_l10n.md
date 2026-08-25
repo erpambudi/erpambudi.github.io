@@ -1,8 +1,5 @@
 ---
-id: RULE-L10N-005
-name: localization-and-strings
-severity: STRICT
-trigger: file_path:lib/**/presentation/**
+trigger: always_on
 ---
 
 # Localization (l10n) & UI Strings Rules

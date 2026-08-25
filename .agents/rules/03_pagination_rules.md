@@ -1,8 +1,5 @@
 ---
-id: RULE-PAGINATE-003
-name: pagination-and-infinite-scroll
-severity: STRICT
-trigger: file_path:lib/features/**
+trigger: always_on
 ---
 
 # Pagination & Infinite Scroll Rules

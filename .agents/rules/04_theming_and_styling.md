@@ -1,8 +1,5 @@
 ---
-id: RULE-THEME-004
-name: theming-and-styling-guidelines
-severity: STRICT
-trigger: file_path:lib/**/presentation/**
+trigger: always_on
 ---
 
 # Theming & Styling Guidelines

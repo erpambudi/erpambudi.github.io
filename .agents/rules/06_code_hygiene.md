@@ -1,8 +1,5 @@
 ---
-id: RULE-HYGIENE-006
-name: code-hygiene-and-file-limits
-severity: STRICT
-trigger: file_path:lib/**
+trigger: always_on
 ---
 
 # Code Hygiene & Structure Rules

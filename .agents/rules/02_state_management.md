@@ -1,8 +1,5 @@
 ---
-id: RULE-STATE-002
-name: state-management-conventions
-severity: STRICT
-trigger: file_path:lib/**/presentation/**
+trigger: always_on
 ---
 
 # State Management Conventions (Cubit / Bloc)

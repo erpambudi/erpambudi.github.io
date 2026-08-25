@@ -1,8 +1,5 @@
 ---
-id: RULE-ARCH-001
-name: clean-architecture-layer-boundaries
-severity: STRICT
-trigger: file_path:lib/features/**
+trigger: always_on
 ---
 
 # Clean Architecture & Layer Boundaries

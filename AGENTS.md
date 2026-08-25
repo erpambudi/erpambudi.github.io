@@ -29,20 +29,20 @@ Baca aturan spesifik sesuai konteks pekerjaan Anda:
 
 | Rule ID | Topik Aturan | File Rule |
 | :--- | :--- | :--- |
-| `RULE-01` | **Clean Architecture & Boundary** | [.agents/rules/01_clean_architecture.md](file:///.agents/rules/01_clean_architecture.md) |
-| `RULE-02` | **State Management & Provider Scope** | [.agents/rules/02_state_management.md](file:///.agents/rules/02_state_management.md) |
-| `RULE-03` | **Pagination & Infinite Scroll** | [.agents/rules/03_pagination_rules.md](file:///.agents/rules/03_pagination_rules.md) |
-| `RULE-04` | **Theming & Design System** | [.agents/rules/04_theming_and_styling.md](file:///.agents/rules/04_theming_and_styling.md) |
-| `RULE-05` | **Localization (l10n) & Strings** | [.agents/rules/05_localization_l10n.md](file:///.agents/rules/05_localization_l10n.md) |
-| `RULE-06` | **Code Hygiene & File Length** | [.agents/rules/06_code_hygiene.md](file:///.agents/rules/06_code_hygiene.md) |
+| `RULE-01` | **Clean Architecture & Boundary** | [.agents/rules/01_clean_architecture.md](.agents/rules/01_clean_architecture.md) |
+| `RULE-02` | **State Management & Provider Scope** | [.agents/rules/02_state_management.md](.agents/rules/02_state_management.md) |
+| `RULE-03` | **Pagination & Infinite Scroll** | [.agents/rules/03_pagination_rules.md](.agents/rules/03_pagination_rules.md) |
+| `RULE-04` | **Theming & Design System** | [.agents/rules/04_theming_and_styling.md](.agents/rules/04_theming_and_styling.md) |
+| `RULE-05` | **Localization (l10n) & Strings** | [.agents/rules/05_localization_l10n.md](.agents/rules/05_localization_l10n.md) |
+| `RULE-06` | **Code Hygiene & File Length** | [.agents/rules/06_code_hygiene.md](.agents/rules/06_code_hygiene.md) |
 
 ---
 
 ## 3. Workspace Skills & Runbooks (`.agents/skills/`)
 
 Gunakan panduan prosedural jika Anda diminta melakukan tugas berikut:
-- **Membuat Fitur Baru Dari Nol**: [.agents/skills/create-feature/SKILL.md](file:///.agents/skills/create-feature/SKILL.md)
-- **Menambahkan List dengan Pagination**: [.agents/skills/add-pagination/SKILL.md](file:///.agents/skills/add-pagination/SKILL.md)
+- **Membuat Fitur Baru Dari Nol**: [.agents/skills/create-feature/SKILL.md](.agents/skills/create-feature/SKILL.md)
+- **Menambahkan List dengan Pagination**: [.agents/skills/add-pagination/SKILL.md](.agents/skills/add-pagination/SKILL.md)
 
 ---
 
