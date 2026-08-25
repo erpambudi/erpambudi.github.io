@@ -227,6 +227,12 @@ class ProjectDetailDialog extends StatelessWidget {
                             icon: const Icon(Icons.download_rounded, size: 16),
                             label: const Text('Download Demo'),
                           ),
+                        if (project.githubUrl != null)
+                          ElevatedButton.icon(
+                            onPressed: () => _openLink(project.githubUrl!),
+                            icon: const Icon(Icons.code_rounded, size: 16),
+                            label: const Text('Source Code'),
+                          ),
                         TextButton(
                           onPressed: () => Navigator.of(context).pop(),
                           child: const Text('Close'),
