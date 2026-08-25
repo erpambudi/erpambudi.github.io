@@ -24,6 +24,7 @@ dependencies:
   shimmer: ^3.0.0
   flutter_svg: ^2.3.0
   window_manager: ^0.5.2
+  url_launcher: ^6.3.1
 
 
 dev_dependencies:
@@ -34,6 +35,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+  assets:
+    - assets/images/
+    - assets/images/porto/
+    - assets/images/serti/
   fonts:
     - family: Poppins
       fonts:

@@ -101,7 +101,7 @@ abstract class AppLocalizations {
   /// No description provided for @appTitle.
   ///
   /// In id, this message translates to:
-  /// **'App Template'**
+  /// **'Rizki Pambudi | Senior Mobile & Flutter Developer'**
   String get appTitle;
 
   /// No description provided for @login.
@@ -337,6 +337,414 @@ abstract class AppLocalizations {
   /// In id, this message translates to:
   /// **'Bahasa'**
   String get language;
+
+  /// No description provided for @portfolioTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Rizki Pambudi | Senior Mobile Developer'**
+  String get portfolioTitle;
+
+  /// No description provided for @heroGreeting.
+  ///
+  /// In id, this message translates to:
+  /// **'Halo, Saya'**
+  String get heroGreeting;
+
+  /// No description provided for @heroName.
+  ///
+  /// In id, this message translates to:
+  /// **'Rizki Pambudi'**
+  String get heroName;
+
+  /// No description provided for @heroRole.
+  ///
+  /// In id, this message translates to:
+  /// **'Senior Flutter & Mobile Developer'**
+  String get heroRole;
+
+  /// No description provided for @heroTagline.
+  ///
+  /// In id, this message translates to:
+  /// **'Membangun aplikasi mobile & multiplatform berkinerja tinggi, elegan, dan scalable dengan Clean Architecture.'**
+  String get heroTagline;
+
+  /// No description provided for @availableForWork.
+  ///
+  /// In id, this message translates to:
+  /// **'Terbuka untuk Peluang Kerja & Proyek Berdampak Tinggi'**
+  String get availableForWork;
+
+  /// No description provided for @downloadCv.
+  ///
+  /// In id, this message translates to:
+  /// **'Unduh CV'**
+  String get downloadCv;
+
+  /// No description provided for @contactMe.
+  ///
+  /// In id, this message translates to:
+  /// **'Hubungi Saya'**
+  String get contactMe;
+
+  /// No description provided for @exploreProjects.
+  ///
+  /// In id, this message translates to:
+  /// **'Lihat Proyek'**
+  String get exploreProjects;
+
+  /// No description provided for @yearsExperience.
+  ///
+  /// In id, this message translates to:
+  /// **'Tahun Pengalaman'**
+  String get yearsExperience;
+
+  /// No description provided for @appsShipped.
+  ///
+  /// In id, this message translates to:
+  /// **'Aplikasi Produksi'**
+  String get appsShipped;
+
+  /// No description provided for @happyUsers.
+  ///
+  /// In id, this message translates to:
+  /// **'Pengguna Terdampak'**
+  String get happyUsers;
+
+  /// No description provided for @certifiedSkills.
+  ///
+  /// In id, this message translates to:
+  /// **'Sertifikasi Resmi'**
+  String get certifiedSkills;
+
+  /// No description provided for @navHome.
+  ///
+  /// In id, this message translates to:
+  /// **'Beranda'**
+  String get navHome;
+
+  /// No description provided for @navAbout.
+  ///
+  /// In id, this message translates to:
+  /// **'Tentang'**
+  String get navAbout;
+
+  /// No description provided for @navSkills.
+  ///
+  /// In id, this message translates to:
+  /// **'Keahlian'**
+  String get navSkills;
+
+  /// No description provided for @navExperience.
+  ///
+  /// In id, this message translates to:
+  /// **'Pengalaman'**
+  String get navExperience;
+
+  /// No description provided for @navProjects.
+  ///
+  /// In id, this message translates to:
+  /// **'Proyek'**
+  String get navProjects;
+
+  /// No description provided for @navCertificates.
+  ///
+  /// In id, this message translates to:
+  /// **'Sertifikasi'**
+  String get navCertificates;
+
+  /// No description provided for @navContact.
+  ///
+  /// In id, this message translates to:
+  /// **'Kontak'**
+  String get navContact;
+
+  /// No description provided for @aboutTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Tentang Saya'**
+  String get aboutTitle;
+
+  /// No description provided for @aboutSubtitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Software Engineer berpengalaman dengan spesialisasi ekosistem Mobile & Multiplatform'**
+  String get aboutSubtitle;
+
+  /// No description provided for @aboutBio.
+  ///
+  /// In id, this message translates to:
+  /// **'Saya seorang Mobile Developer dengan 5+ tahun pengalaman nyata dalam merancang dan mengembangkan aplikasi Android, iOS, Windows, dan macOS yang handal. Sangat menguasai Flutter dan Dart, dengan pemahaman mendalam tentang Clean Architecture, prinsip SOLID, state management BLoC/Cubit, arsitektur offline-first (Hive/SQLite), integrasi perangkat keras (printer thermal Bluetooth POS, QRIS dinamis, geofencing GPS), dan otomatisasi CI/CD. Berkomitmen menghadirkan pengalaman UI/UX kelas dunia serta kode yang modular, bersih, dan mudah diuji.'**
+  String get aboutBio;
+
+  /// No description provided for @location.
+  ///
+  /// In id, this message translates to:
+  /// **'Lokasi'**
+  String get location;
+
+  /// No description provided for @locationValue.
+  ///
+  /// In id, this message translates to:
+  /// **'Jakarta, Indonesia'**
+  String get locationValue;
+
+  /// No description provided for @emailLabel.
+  ///
+  /// In id, this message translates to:
+  /// **'Email'**
+  String get emailLabel;
+
+  /// No description provided for @phoneLabel.
+  ///
+  /// In id, this message translates to:
+  /// **'WhatsApp / Telepon'**
+  String get phoneLabel;
+
+  /// No description provided for @skillsTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Keahlian & Stack Teknologi'**
+  String get skillsTitle;
+
+  /// No description provided for @skillsSubtitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Teknologi, tools, dan arsitektur yang saya gunakan setiap hari'**
+  String get skillsSubtitle;
+
+  /// No description provided for @categoryLanguages.
+  ///
+  /// In id, this message translates to:
+  /// **'Bahasa Pemrograman'**
+  String get categoryLanguages;
+
+  /// No description provided for @categoryFrameworks.
+  ///
+  /// In id, this message translates to:
+  /// **'Framework & State Management'**
+  String get categoryFrameworks;
+
+  /// No description provided for @categoryArchitecture.
+  ///
+  /// In id, this message translates to:
+  /// **'Arsitektur & Clean Code'**
+  String get categoryArchitecture;
+
+  /// No description provided for @categoryDatabase.
+  ///
+  /// In id, this message translates to:
+  /// **'Database & Penyimpanan Lokal'**
+  String get categoryDatabase;
+
+  /// No description provided for @categoryCloud.
+  ///
+  /// In id, this message translates to:
+  /// **'Cloud, API & Backend'**
+  String get categoryCloud;
+
+  /// No description provided for @categoryHardware.
+  ///
+  /// In id, this message translates to:
+  /// **'Integrasi Hardware & Native'**
+  String get categoryHardware;
+
+  /// No description provided for @categoryTools.
+  ///
+  /// In id, this message translates to:
+  /// **'DevOps & Tools'**
+  String get categoryTools;
+
+  /// No description provided for @experienceTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Pengalaman Kerja'**
+  String get experienceTitle;
+
+  /// No description provided for @experienceSubtitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Perjalanan profesional dalam membangun aplikasi berskala enterprise'**
+  String get experienceSubtitle;
+
+  /// No description provided for @present.
+  ///
+  /// In id, this message translates to:
+  /// **'Sekarang'**
+  String get present;
+
+  /// No description provided for @viewAppStore.
+  ///
+  /// In id, this message translates to:
+  /// **'Buka Aplikasi Live'**
+  String get viewAppStore;
+
+  /// No description provided for @keyAchievements.
+  ///
+  /// In id, this message translates to:
+  /// **'Kontribusi & Pencapaian Utama:'**
+  String get keyAchievements;
+
+  /// No description provided for @projectsTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Proyek Unggulan'**
+  String get projectsTitle;
+
+  /// No description provided for @projectsSubtitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Koleksi aplikasi produksi yang dirilis di berbagai platform mobile & desktop'**
+  String get projectsSubtitle;
+
+  /// No description provided for @filterAll.
+  ///
+  /// In id, this message translates to:
+  /// **'Semua Proyek'**
+  String get filterAll;
+
+  /// No description provided for @filterMobile.
+  ///
+  /// In id, this message translates to:
+  /// **'Mobile (Android & iOS)'**
+  String get filterMobile;
+
+  /// No description provided for @filterDesktop.
+  ///
+  /// In id, this message translates to:
+  /// **'Desktop (macOS & Windows)'**
+  String get filterDesktop;
+
+  /// No description provided for @viewDetails.
+  ///
+  /// In id, this message translates to:
+  /// **'Lihat Detail'**
+  String get viewDetails;
+
+  /// No description provided for @liveStore.
+  ///
+  /// In id, this message translates to:
+  /// **'Aplikasi Live'**
+  String get liveStore;
+
+  /// No description provided for @platforms.
+  ///
+  /// In id, this message translates to:
+  /// **'Platform'**
+  String get platforms;
+
+  /// No description provided for @techStack.
+  ///
+  /// In id, this message translates to:
+  /// **'Teknologi'**
+  String get techStack;
+
+  /// No description provided for @certificatesTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Sertifikasi & Lisensi Resmi'**
+  String get certificatesTitle;
+
+  /// No description provided for @certificatesSubtitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Kredensial profesional terverifikasi, predikat expert, dan lisensi kompetensi'**
+  String get certificatesSubtitle;
+
+  /// No description provided for @verifyCredential.
+  ///
+  /// In id, this message translates to:
+  /// **'Lihat Sertifikat'**
+  String get verifyCredential;
+
+  /// No description provided for @credentialId.
+  ///
+  /// In id, this message translates to:
+  /// **'ID Kredensial'**
+  String get credentialId;
+
+  /// No description provided for @issuedBy.
+  ///
+  /// In id, this message translates to:
+  /// **'Penerbit'**
+  String get issuedBy;
+
+  /// No description provided for @contactTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Mari Terhubung & Berkolaborasi'**
+  String get contactTitle;
+
+  /// No description provided for @contactSubtitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Tertarik mendiskusikan peluang kerja atau proyek baru? Mari berbincang!'**
+  String get contactSubtitle;
+
+  /// No description provided for @sendMessage.
+  ///
+  /// In id, this message translates to:
+  /// **'Kirim Pesan'**
+  String get sendMessage;
+
+  /// No description provided for @name.
+  ///
+  /// In id, this message translates to:
+  /// **'Nama Lengkap'**
+  String get name;
+
+  /// No description provided for @subject.
+  ///
+  /// In id, this message translates to:
+  /// **'Subjek'**
+  String get subject;
+
+  /// No description provided for @message.
+  ///
+  /// In id, this message translates to:
+  /// **'Pesan'**
+  String get message;
+
+  /// No description provided for @messageSentSuccess.
+  ///
+  /// In id, this message translates to:
+  /// **'Terima kasih! Membuka aplikasi email Anda...'**
+  String get messageSentSuccess;
+
+  /// No description provided for @quickWhatsApp.
+  ///
+  /// In id, this message translates to:
+  /// **'Chat Langsung di WhatsApp'**
+  String get quickWhatsApp;
+
+  /// No description provided for @scheduleCall.
+  ///
+  /// In id, this message translates to:
+  /// **'Jadwalkan Diskusi'**
+  String get scheduleCall;
+
+  /// No description provided for @copyright.
+  ///
+  /// In id, this message translates to:
+  /// **'© 2026 Rizki Pambudi. Dibuat dengan Flutter Web & Clean Architecture.'**
+  String get copyright;
+
+  /// No description provided for @lightMode.
+  ///
+  /// In id, this message translates to:
+  /// **'Mode Terang'**
+  String get lightMode;
+
+  /// No description provided for @darkMode.
+  ///
+  /// In id, this message translates to:
+  /// **'Mode Gelap'**
+  String get darkMode;
+
+  /// No description provided for @toggleTheme.
+  ///
+  /// In id, this message translates to:
+  /// **'Ganti Tema'**
+  String get toggleTheme;
 }
 
 class _AppLocalizationsDelegate

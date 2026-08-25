@@ -5,11 +5,11 @@ import 'package:go_router/go_router.dart';
 import '../../core/utils/l10n_extension.dart';
 import '../../core/widgets/responsive/responsive_scaffold.dart';
 import '../../features/auth/presentation/cubit/auth_cubit.dart';
-import '../../features/auth/presentation/cubit/auth_state.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/splash_page.dart';
 import '../../features/dashboard/presentation/pages/dashboard_page.dart';
 import '../../features/orders/presentation/pages/order_list_page.dart';
+import '../../features/portfolio/presentation/pages/portfolio_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
 import 'app_routes.dart';
 
@@ -56,36 +56,14 @@ class AppRouter {
 
   late final GoRouter router = GoRouter(
     navigatorKey: navigatorKey,
-    initialLocation: AppRoutes.splash,
+    initialLocation: AppRoutes.portfolio,
     refreshListenable: GoRouterRefreshStream(authCubit.stream),
-    redirect: (context, state) {
-      final authState = authCubit.state;
-      final isGoingToLogin = state.matchedLocation == AppRoutes.login;
-      final isSplash = state.matchedLocation == AppRoutes.splash;
-
-      if (authState is AuthInitialState) {
-        return isSplash ? null : AppRoutes.splash;
-      }
-
-      if (authState is AuthLoadingState) {
-        return null; // Stay on current page while loading
-      }
-
-      if (authState is AuthUnauthenticatedState ||
-          authState is AuthErrorState) {
-        if (!isGoingToLogin) return AppRoutes.login;
-        return null; // Stay on login
-      }
-
-      if (authState is AuthAuthenticatedState) {
-        if (isGoingToLogin || isSplash) {
-          return AppRoutes.dashboard;
-        }
-      }
-
-      return null;
-    },
     routes: [
+      // Portfolio Main Landing Route
+      GoRoute(
+        path: AppRoutes.portfolio,
+        builder: (context, state) => PortfolioPage.create(),
+      ),
       // Auth routes (outside shell)
       GoRoute(
         path: AppRoutes.splash,

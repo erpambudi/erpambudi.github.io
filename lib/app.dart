@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/bloc/locale/locale_cubit.dart';
-import 'core/config/flavor_config.dart';
+import 'core/bloc/theme/theme_cubit.dart';
 import 'core/widgets/dialogs/unauthorized_dialog.dart';
 import 'l10n/app_localizations.dart';
 import 'core/network/api_client.dart';
@@ -32,7 +32,6 @@ class _MyAppState extends State<MyApp> {
       authCubit: _authCubit,
       navigatorKey: rootNavigatorKey,
     );
-    _authCubit.checkAuthStatus();
 
     _setupUnauthorizedHandler();
   }
@@ -50,35 +49,31 @@ class _MyAppState extends State<MyApp> {
       providers: [
         BlocProvider<AuthCubit>.value(value: _authCubit),
         BlocProvider<LocaleCubit>(create: (_) => sl<LocaleCubit>()),
+        BlocProvider<ThemeCubit>(create: (_) => sl<ThemeCubit>()),
       ],
-      child: BlocBuilder<LocaleCubit, Locale>(
-        builder: (context, locale) {
-          return MaterialApp.router(
-            title: FlavorConfig.appName,
-            debugShowCheckedModeBanner: FlavorConfig.isDevelopment,
-            theme: AppTheme.lightTheme,
-            locale: locale,
-            localizationsDelegates: const [
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: const [Locale('id', 'ID'), Locale('en', 'US')],
-            routerConfig: _appRouter.router,
-            builder: (context, child) {
-              if (FlavorConfig.isDevelopment) {
-                return Directionality(
-                  textDirection: TextDirection.ltr,
-                  child: Banner(
-                    color: Colors.red,
-                    message: 'DEV',
-                    location: BannerLocation.topEnd,
-                    child: child,
-                  ),
-                );
-              }
-              return child!;
+      child: BlocBuilder<ThemeCubit, ThemeMode>(
+        builder: (context, themeMode) {
+          return BlocBuilder<LocaleCubit, Locale>(
+            builder: (context, locale) {
+              return MaterialApp.router(
+                title: 'Rizki Pambudi | Senior Flutter & Mobile Developer',
+                debugShowCheckedModeBanner: false,
+                theme: AppTheme.lightTheme,
+                darkTheme: AppTheme.darkTheme,
+                themeMode: themeMode,
+                locale: locale,
+                localizationsDelegates: const [
+                  AppLocalizations.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: const [
+                  Locale('id', 'ID'),
+                  Locale('en', 'US'),
+                ],
+                routerConfig: _appRouter.router,
+              );
             },
           );
         },

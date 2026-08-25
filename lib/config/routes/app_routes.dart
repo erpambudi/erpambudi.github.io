@@ -1,7 +1,8 @@
 class AppRoutes {
   AppRoutes._();
 
-  static const String splash = '/';
+  static const String portfolio = '/';
+  static const String splash = '/splash';
   static const String login = '/login';
 
   // Main shell routes (after login)

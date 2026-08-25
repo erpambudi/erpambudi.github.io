@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/bloc/locale/locale_cubit.dart';
+import 'core/bloc/theme/theme_cubit.dart';
 import 'core/network/api_client.dart';
 import 'core/network/network_info.dart';
 import 'core/network/token_storage.dart';
@@ -14,6 +15,10 @@ import 'features/orders/data/datasources/order_remote_data_source.dart';
 import 'features/orders/data/repositories/order_repository_impl.dart';
 import 'features/orders/domain/repositories/order_repository.dart';
 import 'features/orders/presentation/cubit/order_list_cubit.dart';
+import 'features/portfolio/data/datasources/portfolio_local_data_source.dart';
+import 'features/portfolio/data/repositories/portfolio_repository_impl.dart';
+import 'features/portfolio/domain/repositories/portfolio_repository.dart';
+import 'features/portfolio/presentation/cubit/portfolio_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -52,6 +57,9 @@ Future<void> init() async {
   sl.registerLazySingleton<OrderRemoteDataSource>(
     () => OrderRemoteDataSourceImpl(apiClient: sl()),
   );
+  sl.registerLazySingleton<PortfolioLocalDataSource>(
+    () => PortfolioLocalDataSourceImpl(),
+  );
 
   // 5. Repositories
   sl.registerLazySingleton<AuthRepository>(
@@ -65,9 +73,14 @@ Future<void> init() async {
   sl.registerLazySingleton<OrderRepository>(
     () => OrderRepositoryImpl(remoteDataSource: sl(), networkInfo: sl()),
   );
+  sl.registerLazySingleton<PortfolioRepository>(
+    () => PortfolioRepositoryImpl(localDataSource: sl()),
+  );
 
   // 6. Cubits
   sl.registerFactory(() => AuthCubit(repository: sl()));
   sl.registerFactory(() => OrderListCubit(repository: sl()));
+  sl.registerFactory(() => PortfolioCubit(repository: sl()));
   sl.registerLazySingleton(() => LocaleCubit(prefs: sl()));
+  sl.registerLazySingleton(() => ThemeCubit(prefs: sl()));
 }
