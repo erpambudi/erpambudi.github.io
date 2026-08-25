@@ -63,7 +63,7 @@ class _ContactFormCardState extends State<ContactFormCard> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final paddingVal = context.responsiveValue(
-      mobile: 16.0,
+      mobile: 18.0,
       tablet: 22.0,
       desktop: 24.0,
     );
@@ -75,7 +75,15 @@ class _ContactFormCardState extends State<ContactFormCard> {
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: isDark ? AppColors.borderDark : AppColors.borderLight,
+          width: 1.0,
         ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.03),
+            blurRadius: 10,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Form(
         key: _formKey,
@@ -89,7 +97,7 @@ class _ContactFormCardState extends State<ContactFormCard> {
                 prefixIcon: const Icon(Icons.person_rounded, size: 18),
               ),
               validator: (v) => (v == null || v.trim().isEmpty)
-                  ? 'Please enter your name'
+                  ? context.l10n.nameRequired
                   : null,
             ),
             const SizedBox(height: 14),
@@ -100,7 +108,7 @@ class _ContactFormCardState extends State<ContactFormCard> {
                 prefixIcon: const Icon(Icons.subject_rounded, size: 18),
               ),
               validator: (v) => (v == null || v.trim().isEmpty)
-                  ? 'Please enter a subject'
+                  ? context.l10n.subjectRequired
                   : null,
             ),
             const SizedBox(height: 14),
@@ -116,7 +124,7 @@ class _ContactFormCardState extends State<ContactFormCard> {
                 ),
               ),
               validator: (v) => (v == null || v.trim().isEmpty)
-                  ? 'Please write your message'
+                  ? context.l10n.messageRequired
                   : null,
             ),
             const SizedBox(height: 20),
@@ -128,6 +136,9 @@ class _ContactFormCardState extends State<ContactFormCard> {
                 label: Text(context.l10n.sendMessage),
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 12),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
               ),
             ),

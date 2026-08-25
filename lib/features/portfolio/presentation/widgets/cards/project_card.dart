@@ -35,6 +35,7 @@ class _ProjectCardState extends State<ProjectCard> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final locale = Localizations.localeOf(context).languageCode;
     final proj = widget.project;
 
     return MouseRegion(
@@ -109,7 +110,7 @@ class _ProjectCardState extends State<ProjectCard> {
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: Text(
-                          proj.categoryLabel,
+                          proj.getCategoryLabel(locale),
                           style: const TextStyle(
                             fontSize: 10,
                             fontWeight: FontWeight.w600,
@@ -131,9 +132,9 @@ class _ProjectCardState extends State<ProjectCard> {
                             color: AppColors.primary,
                             borderRadius: BorderRadius.circular(6),
                           ),
-                          child: const Text(
-                            'Featured',
-                            style: TextStyle(
+                          child: Text(
+                            context.l10n.featured,
+                            style: const TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w700,
                               color: Colors.white,
@@ -163,7 +164,7 @@ class _ProjectCardState extends State<ProjectCard> {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        proj.subtitle,
+                        proj.getSubtitle(locale),
                         style: TextStyle(
                           fontSize: 13,
                           height: 1.4,

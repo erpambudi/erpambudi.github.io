@@ -94,18 +94,18 @@ class CertificateDetailDialog extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(color: Colors.white24),
                         ),
-                        child: const Row(
+                        child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.fullscreen_rounded,
                               size: 16,
                               color: Colors.white,
                             ),
-                            SizedBox(width: 4),
+                            const SizedBox(width: 4),
                             Text(
-                              'Zoom / Fullscreen',
-                              style: TextStyle(
+                              context.l10n.zoomFullscreen,
+                              style: const TextStyle(
                                 fontSize: 11,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white,
@@ -182,11 +182,11 @@ class CertificateDetailDialog extends StatelessWidget {
                         OutlinedButton.icon(
                           onPressed: () => _openFullScreen(context),
                           icon: const Icon(Icons.fullscreen_rounded, size: 16),
-                          label: const Text('View Full Image'),
+                          label: Text(context.l10n.viewFullImage),
                         ),
                         TextButton(
                           onPressed: () => Navigator.of(context).pop(),
-                          child: const Text('Close'),
+                          child: Text(context.l10n.close),
                         ),
                       ],
                     ),

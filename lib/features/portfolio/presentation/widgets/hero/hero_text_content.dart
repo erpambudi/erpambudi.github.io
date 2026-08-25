@@ -31,6 +31,7 @@ class HeroTextContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final isDesktop = context.isDesktop;
+    final locale = Localizations.localeOf(context).languageCode;
     final nameFontSize = context.responsiveValue(
       mobile: 28.0,
       tablet: 34.0,
@@ -79,7 +80,7 @@ class HeroTextContent extends StatelessWidget {
         ),
         const SizedBox(height: 14),
         Text(
-          profile.tagline,
+          profile.getTagline(locale),
           textAlign: isDesktop ? TextAlign.start : TextAlign.center,
           style: TextStyle(
             fontSize: 14,

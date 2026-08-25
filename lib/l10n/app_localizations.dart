@@ -745,6 +745,192 @@ abstract class AppLocalizations {
   /// In id, this message translates to:
   /// **'Ganti Tema'**
   String get toggleTheme;
+
+  /// No description provided for @fullscreen.
+  ///
+  /// In id, this message translates to:
+  /// **'Layar Penuh'**
+  String get fullscreen;
+
+  /// No description provided for @zoomFullscreen.
+  ///
+  /// In id, this message translates to:
+  /// **'Perbesar / Layar Penuh'**
+  String get zoomFullscreen;
+
+  /// No description provided for @viewFullImage.
+  ///
+  /// In id, this message translates to:
+  /// **'Lihat Gambar Penuh'**
+  String get viewFullImage;
+
+  /// No description provided for @resetZoom.
+  ///
+  /// In id, this message translates to:
+  /// **'Reset Zoom'**
+  String get resetZoom;
+
+  /// No description provided for @zoomHint.
+  ///
+  /// In id, this message translates to:
+  /// **'Cubit / Scroll untuk memperbesar • Geser untuk menggeser'**
+  String get zoomHint;
+
+  /// No description provided for @close.
+  ///
+  /// In id, this message translates to:
+  /// **'Tutup'**
+  String get close;
+
+  /// No description provided for @downloadDemo.
+  ///
+  /// In id, this message translates to:
+  /// **'Unduh Demo'**
+  String get downloadDemo;
+
+  /// No description provided for @sourceCode.
+  ///
+  /// In id, this message translates to:
+  /// **'Kode Sumber'**
+  String get sourceCode;
+
+  /// No description provided for @googlePlay.
+  ///
+  /// In id, this message translates to:
+  /// **'Google Play'**
+  String get googlePlay;
+
+  /// No description provided for @keyArchitectureFeatures.
+  ///
+  /// In id, this message translates to:
+  /// **'Arsitektur & Fitur Kunci:'**
+  String get keyArchitectureFeatures;
+
+  /// No description provided for @nameRequired.
+  ///
+  /// In id, this message translates to:
+  /// **'Mohon masukkan nama Anda'**
+  String get nameRequired;
+
+  /// No description provided for @subjectRequired.
+  ///
+  /// In id, this message translates to:
+  /// **'Mohon masukkan subjek pesan'**
+  String get subjectRequired;
+
+  /// No description provided for @messageRequired.
+  ///
+  /// In id, this message translates to:
+  /// **'Mohon tulis pesan Anda'**
+  String get messageRequired;
+
+  /// No description provided for @directChat.
+  ///
+  /// In id, this message translates to:
+  /// **'Chat Langsung'**
+  String get directChat;
+
+  /// No description provided for @connectLinkedIn.
+  ///
+  /// In id, this message translates to:
+  /// **'Terhubung di LinkedIn'**
+  String get connectLinkedIn;
+
+  /// No description provided for @sendDirectMail.
+  ///
+  /// In id, this message translates to:
+  /// **'Kirim Email Langsung'**
+  String get sendDirectMail;
+
+  /// No description provided for @whatsAppMessenger.
+  ///
+  /// In id, this message translates to:
+  /// **'WhatsApp Messenger'**
+  String get whatsAppMessenger;
+
+  /// No description provided for @linkedInNetwork.
+  ///
+  /// In id, this message translates to:
+  /// **'Jejaring LinkedIn'**
+  String get linkedInNetwork;
+
+  /// No description provided for @emailAddress.
+  ///
+  /// In id, this message translates to:
+  /// **'Alamat Email'**
+  String get emailAddress;
+
+  /// No description provided for @pillarCleanTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Kode Bersih & Terstruktur'**
+  String get pillarCleanTitle;
+
+  /// No description provided for @pillarCleanDesc.
+  ///
+  /// In id, this message translates to:
+  /// **'Menerapkan Clean Architecture, prinsip SOLID, & BLoC state management untuk kemudahan pemeliharaan jangka panjang.'**
+  String get pillarCleanDesc;
+
+  /// No description provided for @pillarOmniTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Omnichannel & Integrasi Hardware'**
+  String get pillarOmniTitle;
+
+  /// No description provided for @pillarOmniDesc.
+  ///
+  /// In id, this message translates to:
+  /// **'Pengalaman langsung mengintegrasikan printer Bluetooth ESC/POS, dynamic QRIS, & chat multi-marketplace.'**
+  String get pillarOmniDesc;
+
+  /// No description provided for @pillarOfflineTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Arsitektur Offline-First'**
+  String get pillarOfflineTitle;
+
+  /// No description provided for @pillarOfflineDesc.
+  ///
+  /// In id, this message translates to:
+  /// **'Merancang persistensi lokal yang tangguh dengan Hive/SQLite & sinkronisasi otomatis di latar belakang.'**
+  String get pillarOfflineDesc;
+
+  /// No description provided for @pillarResponsiveTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Desain Presisi & Responsif'**
+  String get pillarResponsiveTitle;
+
+  /// No description provided for @pillarResponsiveDesc.
+  ///
+  /// In id, this message translates to:
+  /// **'Membangun antarmuka UI/UX yang dinamis dan adaptif di layar smartphone, tablet, dan komputer desktop.'**
+  String get pillarResponsiveDesc;
+
+  /// No description provided for @featured.
+  ///
+  /// In id, this message translates to:
+  /// **'Unggulan'**
+  String get featured;
+
+  /// No description provided for @retry.
+  ///
+  /// In id, this message translates to:
+  /// **'Coba Lagi'**
+  String get retry;
+
+  /// No description provided for @badgeFlutterExpert.
+  ///
+  /// In id, this message translates to:
+  /// **'Ahli Flutter ⚡'**
+  String get badgeFlutterExpert;
+
+  /// No description provided for @badgeCleanArch.
+  ///
+  /// In id, this message translates to:
+  /// **'Clean Architecture 🏛️'**
+  String get badgeCleanArch;
 }
 
 class _AppLocalizationsDelegate

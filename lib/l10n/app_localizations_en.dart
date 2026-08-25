@@ -340,4 +340,101 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get toggleTheme => 'Toggle Theme';
+
+  @override
+  String get fullscreen => 'Fullscreen';
+
+  @override
+  String get zoomFullscreen => 'Zoom / Fullscreen';
+
+  @override
+  String get viewFullImage => 'View Full Image';
+
+  @override
+  String get resetZoom => 'Reset Zoom';
+
+  @override
+  String get zoomHint => 'Pinch / Scroll to zoom • Drag to pan';
+
+  @override
+  String get close => 'Close';
+
+  @override
+  String get downloadDemo => 'Download Demo';
+
+  @override
+  String get sourceCode => 'Source Code';
+
+  @override
+  String get googlePlay => 'Google Play';
+
+  @override
+  String get keyArchitectureFeatures => 'Key Architecture & Features:';
+
+  @override
+  String get nameRequired => 'Please enter your name';
+
+  @override
+  String get subjectRequired => 'Please enter a subject';
+
+  @override
+  String get messageRequired => 'Please write your message';
+
+  @override
+  String get directChat => 'Direct Chat';
+
+  @override
+  String get connectLinkedIn => 'Connect on LinkedIn';
+
+  @override
+  String get sendDirectMail => 'Send Direct Mail';
+
+  @override
+  String get whatsAppMessenger => 'WhatsApp Messenger';
+
+  @override
+  String get linkedInNetwork => 'LinkedIn Network';
+
+  @override
+  String get emailAddress => 'Email Address';
+
+  @override
+  String get pillarCleanTitle => 'Clean & Scalable Code';
+
+  @override
+  String get pillarCleanDesc =>
+      'Applying Clean Architecture, SOLID principles, & BLoC state management for long-term maintainability.';
+
+  @override
+  String get pillarOmniTitle => 'Omnichannel & Hardware';
+
+  @override
+  String get pillarOmniDesc =>
+      'Direct experience integrating ESC/POS Bluetooth printers, dynamic QRIS, & multi-marketplace chat.';
+
+  @override
+  String get pillarOfflineTitle => 'Offline-First & Resilient';
+
+  @override
+  String get pillarOfflineDesc =>
+      'Architecting robust local persistence with Hive/SQLite & background sync.';
+
+  @override
+  String get pillarResponsiveTitle => 'Pixel Perfect & Responsive';
+
+  @override
+  String get pillarResponsiveDesc =>
+      'Crafting fluid UI/UX adapted for mobile, tablet, and desktop viewports.';
+
+  @override
+  String get featured => 'Featured';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get badgeFlutterExpert => 'Flutter Expert ⚡';
+
+  @override
+  String get badgeCleanArch => 'Clean Architecture 🏛️';
 }

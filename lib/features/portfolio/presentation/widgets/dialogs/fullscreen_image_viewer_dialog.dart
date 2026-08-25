@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_template/core/theme/app_colors.dart';
+import 'package:mobile_template/core/utils/l10n_extension.dart';
 
 class FullScreenImageViewerDialog extends StatefulWidget {
   final String imagePath;
@@ -132,7 +133,7 @@ class _FullScreenImageViewerDialogState
                       foregroundColor: Colors.white,
                     ),
                     icon: const Icon(Icons.refresh_rounded, size: 20),
-                    tooltip: 'Reset Zoom',
+                    tooltip: context.l10n.resetZoom,
                   ),
                   const SizedBox(width: 10),
                   // Close Fullscreen Button
@@ -143,7 +144,7 @@ class _FullScreenImageViewerDialogState
                       foregroundColor: Colors.white,
                     ),
                     icon: const Icon(Icons.close_rounded, size: 22),
-                    tooltip: 'Close',
+                    tooltip: context.l10n.close,
                   ),
                 ],
               ),
@@ -164,18 +165,21 @@ class _FullScreenImageViewerDialogState
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(color: Colors.white12),
                   ),
-                  child: const Row(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.pinch_rounded,
                         size: 16,
                         color: Colors.white70,
                       ),
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                       Text(
-                        'Pinch / Scroll to zoom • Drag to pan',
-                        style: TextStyle(fontSize: 12, color: Colors.white70),
+                        context.l10n.zoomHint,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.white70,
+                        ),
                       ),
                     ],
                   ),

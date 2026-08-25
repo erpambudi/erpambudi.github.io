@@ -36,6 +36,7 @@ class _ExperienceTimelineCardState extends State<ExperienceTimelineCard> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final locale = Localizations.localeOf(context).languageCode;
     final exp = widget.experience;
 
     return MouseRegion(
@@ -64,7 +65,7 @@ class _ExperienceTimelineCardState extends State<ExperienceTimelineCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Responsive Header (Wrap prevents overflow on small screens)
+            // Responsive Header
             Wrap(
               alignment: WrapAlignment.spaceBetween,
               crossAxisAlignment: WrapCrossAlignment.center,
@@ -80,7 +81,7 @@ class _ExperienceTimelineCardState extends State<ExperienceTimelineCard> {
                       runSpacing: 4,
                       children: [
                         Text(
-                          exp.role,
+                          exp.getRole(locale),
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
@@ -136,7 +137,7 @@ class _ExperienceTimelineCardState extends State<ExperienceTimelineCard> {
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: Text(
-                    exp.period,
+                    exp.getPeriod(locale),
                     style: TextStyle(
                       fontSize: 11,
                       fontWeight: FontWeight.w500,
@@ -150,7 +151,7 @@ class _ExperienceTimelineCardState extends State<ExperienceTimelineCard> {
             ),
             const SizedBox(height: 12),
             Text(
-              exp.description,
+              exp.getDescription(locale),
               style: TextStyle(
                 fontSize: 13,
                 height: 1.5,
@@ -160,7 +161,7 @@ class _ExperienceTimelineCardState extends State<ExperienceTimelineCard> {
               ),
             ),
             const SizedBox(height: 12),
-            ...exp.highlights.map((highlight) {
+            ...exp.getHighlights(locale).map((highlight) {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 6),
                 child: Row(

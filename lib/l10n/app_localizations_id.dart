@@ -342,4 +342,102 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get toggleTheme => 'Ganti Tema';
+
+  @override
+  String get fullscreen => 'Layar Penuh';
+
+  @override
+  String get zoomFullscreen => 'Perbesar / Layar Penuh';
+
+  @override
+  String get viewFullImage => 'Lihat Gambar Penuh';
+
+  @override
+  String get resetZoom => 'Reset Zoom';
+
+  @override
+  String get zoomHint =>
+      'Cubit / Scroll untuk memperbesar • Geser untuk menggeser';
+
+  @override
+  String get close => 'Tutup';
+
+  @override
+  String get downloadDemo => 'Unduh Demo';
+
+  @override
+  String get sourceCode => 'Kode Sumber';
+
+  @override
+  String get googlePlay => 'Google Play';
+
+  @override
+  String get keyArchitectureFeatures => 'Arsitektur & Fitur Kunci:';
+
+  @override
+  String get nameRequired => 'Mohon masukkan nama Anda';
+
+  @override
+  String get subjectRequired => 'Mohon masukkan subjek pesan';
+
+  @override
+  String get messageRequired => 'Mohon tulis pesan Anda';
+
+  @override
+  String get directChat => 'Chat Langsung';
+
+  @override
+  String get connectLinkedIn => 'Terhubung di LinkedIn';
+
+  @override
+  String get sendDirectMail => 'Kirim Email Langsung';
+
+  @override
+  String get whatsAppMessenger => 'WhatsApp Messenger';
+
+  @override
+  String get linkedInNetwork => 'Jejaring LinkedIn';
+
+  @override
+  String get emailAddress => 'Alamat Email';
+
+  @override
+  String get pillarCleanTitle => 'Kode Bersih & Terstruktur';
+
+  @override
+  String get pillarCleanDesc =>
+      'Menerapkan Clean Architecture, prinsip SOLID, & BLoC state management untuk kemudahan pemeliharaan jangka panjang.';
+
+  @override
+  String get pillarOmniTitle => 'Omnichannel & Integrasi Hardware';
+
+  @override
+  String get pillarOmniDesc =>
+      'Pengalaman langsung mengintegrasikan printer Bluetooth ESC/POS, dynamic QRIS, & chat multi-marketplace.';
+
+  @override
+  String get pillarOfflineTitle => 'Arsitektur Offline-First';
+
+  @override
+  String get pillarOfflineDesc =>
+      'Merancang persistensi lokal yang tangguh dengan Hive/SQLite & sinkronisasi otomatis di latar belakang.';
+
+  @override
+  String get pillarResponsiveTitle => 'Desain Presisi & Responsif';
+
+  @override
+  String get pillarResponsiveDesc =>
+      'Membangun antarmuka UI/UX yang dinamis dan adaptif di layar smartphone, tablet, dan komputer desktop.';
+
+  @override
+  String get featured => 'Unggulan';
+
+  @override
+  String get retry => 'Coba Lagi';
+
+  @override
+  String get badgeFlutterExpert => 'Ahli Flutter ⚡';
+
+  @override
+  String get badgeCleanArch => 'Clean Architecture 🏛️';
 }

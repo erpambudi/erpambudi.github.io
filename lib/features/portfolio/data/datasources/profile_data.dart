@@ -5,8 +5,12 @@ const kProfileData = ProfileModel(
   title: 'Senior Flutter & Mobile Developer',
   tagline:
       'Engineering robust, high-performance, and delightful cross-platform mobile & desktop applications with Clean Architecture.',
+  taglineId:
+      'Membangun aplikasi mobile & multiplatform berkinerja tinggi, elegan, dan scalable dengan Clean Architecture.',
   bio:
       'Mobile Developer with 5+ years of production experience specializing in Flutter, Dart, Android, and iOS ecosystems. Proven track record building enterprise POS systems, multi-channel chat platforms, e-commerce logistics, and banking apps with Clean Architecture, BLoC/Cubit state management, offline-first sync (Hive/SQLite), and native hardware integrations.',
+  bioId:
+      'Saya seorang Mobile Developer dengan 5+ tahun pengalaman nyata dalam merancang dan mengembangkan aplikasi Android, iOS, Windows, dan macOS yang handal. Sangat menguasai Flutter dan Dart, dengan pemahaman mendalam tentang Clean Architecture, prinsip SOLID, state management BLoC/Cubit, arsitektur offline-first (Hive/SQLite), integrasi perangkat keras (printer thermal Bluetooth POS, QRIS dinamis, geofencing GPS), dan otomatisasi CI/CD.',
   yearsOfExperience: 5,
   location: 'Jakarta, Indonesia',
   email: 'erpambudi0@gmail.com',

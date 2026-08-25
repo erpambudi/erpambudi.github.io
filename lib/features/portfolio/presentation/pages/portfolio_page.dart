@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_template/core/extensions/context_extensions.dart';
 import 'package:mobile_template/core/theme/app_colors.dart';
+import 'package:mobile_template/core/utils/l10n_extension.dart';
 import 'package:mobile_template/injection_container.dart';
 import '../cubit/portfolio_cubit.dart';
 import '../cubit/portfolio_state.dart';
@@ -102,7 +103,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
                   ElevatedButton(
                     onPressed: () =>
                         context.read<PortfolioCubit>().loadPortfolioData(),
-                    child: const Text('Retry'),
+                    child: Text(context.l10n.retry),
                   ),
                 ],
               ),

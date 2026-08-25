@@ -6,9 +6,13 @@ class ProjectModel extends ProjectEntity {
     required super.title,
     required super.category,
     required super.categoryLabel,
+    super.categoryLabelId,
     required super.subtitle,
+    super.subtitleId,
     required super.description,
+    super.descriptionId,
     required super.keyFeatures,
+    super.keyFeaturesId,
     required super.technologies,
     required super.platforms,
     required super.imagePath,
@@ -35,13 +39,19 @@ class ProjectModel extends ProjectEntity {
       title: json['title'] as String? ?? '',
       category: parseCategory(json['category'] as String?),
       categoryLabel: json['categoryLabel'] as String? ?? 'Mobile App',
+      categoryLabelId: json['categoryLabelId'] as String?,
       subtitle: json['subtitle'] as String? ?? '',
+      subtitleId: json['subtitleId'] as String?,
       description: json['description'] as String? ?? '',
+      descriptionId: json['descriptionId'] as String?,
       keyFeatures:
           (json['keyFeatures'] as List<dynamic>?)
               ?.map((e) => e.toString())
               .toList() ??
           [],
+      keyFeaturesId: (json['keyFeaturesId'] as List<dynamic>?)
+          ?.map((e) => e.toString())
+          .toList(),
       technologies:
           (json['technologies'] as List<dynamic>?)
               ?.map((e) => e.toString())

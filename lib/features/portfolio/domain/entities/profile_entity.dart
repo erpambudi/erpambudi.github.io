@@ -2,7 +2,9 @@ class ProfileEntity {
   final String name;
   final String title;
   final String tagline;
+  final String? taglineId;
   final String bio;
+  final String? bioId;
   final int yearsOfExperience;
   final String location;
   final String email;
@@ -21,7 +23,9 @@ class ProfileEntity {
     required this.name,
     required this.title,
     required this.tagline,
+    this.taglineId,
     required this.bio,
+    this.bioId,
     required this.yearsOfExperience,
     required this.location,
     required this.email,
@@ -36,4 +40,10 @@ class ProfileEntity {
     required this.activeUsers,
     required this.certificationsCount,
   });
+
+  String getTagline(String locale) =>
+      (locale == 'id' && taglineId != null) ? taglineId! : tagline;
+
+  String getBio(String locale) =>
+      (locale == 'id' && bioId != null) ? bioId! : bio;
 }

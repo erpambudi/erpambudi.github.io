@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:mobile_template/core/theme/app_colors.dart';
+import 'package:mobile_template/core/utils/l10n_extension.dart';
 import 'package:mobile_template/features/portfolio/domain/entities/profile_entity.dart';
 
 class ContactInfoTiles extends StatelessWidget {
@@ -23,28 +24,31 @@ class ContactInfoTiles extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildActionTile(
+          context,
           Icons.chat_rounded,
-          'WhatsApp Messenger',
+          context.l10n.whatsAppMessenger,
           profile.phone,
-          'Direct Chat',
+          context.l10n.directChat,
           () => _openLink(profile.whatsAppUrl),
           isDark,
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 14),
         _buildActionTile(
+          context,
           Icons.work_rounded,
-          'LinkedIn Network',
+          context.l10n.linkedInNetwork,
           'Rizki Pambudi',
-          'Connect on LinkedIn',
+          context.l10n.connectLinkedIn,
           () => _openLink(profile.linkedInUrl),
           isDark,
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 14),
         _buildActionTile(
+          context,
           Icons.email_rounded,
-          'Email Address',
+          context.l10n.emailAddress,
           profile.email,
-          'Send Direct Mail',
+          context.l10n.sendDirectMail,
           () => _openLink('mailto:${profile.email}'),
           isDark,
         ),
@@ -53,6 +57,7 @@ class ContactInfoTiles extends StatelessWidget {
   }
 
   Widget _buildActionTile(
+    BuildContext context,
     IconData icon,
     String title,
     String subtitle,
@@ -61,13 +66,21 @@ class ContactInfoTiles extends StatelessWidget {
     bool isDark,
   ) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: isDark ? AppColors.cardDark : AppColors.surfaceLight,
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: isDark ? AppColors.borderDark : AppColors.borderLight,
+          width: 1.0,
         ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.03),
+            blurRadius: 10,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,9 +144,12 @@ class ContactInfoTiles extends StatelessWidget {
                 ),
               ),
               style: OutlinedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 8),
+                padding: const EdgeInsets.symmetric(vertical: 9),
+                side: BorderSide(
+                  color: isDark ? AppColors.borderDark : AppColors.borderLight,
+                ),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(10),
                 ),
               ),
             ),

@@ -20,11 +20,12 @@ class ProjectDetailDialog extends StatelessWidget {
   }
 
   void _openFullScreen(BuildContext context) {
+    final locale = Localizations.localeOf(context).languageCode;
     FullScreenImageViewerDialog.show(
       context,
       imagePath: project.imagePath,
       title: project.title,
-      subtitle: project.categoryLabel,
+      subtitle: project.getCategoryLabel(locale),
     );
   }
 
@@ -32,6 +33,7 @@ class ProjectDetailDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final size = MediaQuery.of(context).size;
+    final locale = Localizations.localeOf(context).languageCode;
 
     return Dialog(
       backgroundColor: isDark ? AppColors.cardDark : AppColors.surfaceLight,
@@ -54,7 +56,7 @@ class ProjectDetailDialog extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildTags(isDark),
+                    _buildTags(locale, isDark),
                     const SizedBox(height: 12),
                     Text(
                       project.title,
@@ -68,7 +70,7 @@ class ProjectDetailDialog extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      project.description,
+                      project.getDescription(locale),
                       style: TextStyle(
                         fontSize: 13,
                         height: 1.5,
@@ -79,7 +81,7 @@ class ProjectDetailDialog extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      'Key Architecture & Features:',
+                      context.l10n.keyArchitectureFeatures,
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
@@ -89,9 +91,9 @@ class ProjectDetailDialog extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    ...project.keyFeatures.map(
-                      (f) => _buildFeatureItem(f, isDark),
-                    ),
+                    ...project
+                        .getKeyFeatures(locale)
+                        .map((f) => _buildFeatureItem(f, isDark)),
                     const SizedBox(height: 16),
                     Text(
                       context.l10n.techStack,
@@ -123,7 +125,7 @@ class ProjectDetailDialog extends StatelessWidget {
     );
   }
 
-  Widget _buildTags(bool isDark) {
+  Widget _buildTags(String locale, bool isDark) {
     return Wrap(
       spacing: 6,
       runSpacing: 6,
@@ -135,7 +137,7 @@ class ProjectDetailDialog extends StatelessWidget {
             borderRadius: BorderRadius.circular(6),
           ),
           child: Text(
-            project.categoryLabel,
+            project.getCategoryLabel(locale),
             style: const TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w600,
@@ -206,28 +208,28 @@ class ProjectDetailDialog extends StatelessWidget {
           ElevatedButton.icon(
             onPressed: () => _openLink(project.playStoreUrl!),
             icon: const Icon(Icons.shop_rounded, size: 16),
-            label: const Text('Google Play'),
+            label: Text(context.l10n.googlePlay),
           ),
         if (project.demoUrl != null)
           ElevatedButton.icon(
             onPressed: () => _openLink(project.demoUrl!),
             icon: const Icon(Icons.download_rounded, size: 16),
-            label: const Text('Download Demo'),
+            label: Text(context.l10n.downloadDemo),
           ),
         if (project.githubUrl != null)
           ElevatedButton.icon(
             onPressed: () => _openLink(project.githubUrl!),
             icon: const Icon(Icons.code_rounded, size: 16),
-            label: const Text('Source Code'),
+            label: Text(context.l10n.sourceCode),
           ),
         OutlinedButton.icon(
           onPressed: () => _openFullScreen(context),
           icon: const Icon(Icons.fullscreen_rounded, size: 16),
-          label: const Text('View Full Image'),
+          label: Text(context.l10n.viewFullImage),
         ),
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: const Text('Close'),
+          child: Text(context.l10n.close),
         ),
       ],
     );

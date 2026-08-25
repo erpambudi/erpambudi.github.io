@@ -89,11 +89,13 @@ class AboutSection extends StatelessWidget {
   }
 
   Widget _buildBioText(BuildContext context, bool isDark) {
+    final locale = Localizations.localeOf(context).languageCode;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          context.l10n.aboutBio,
+          profile.getBio(locale),
           style: TextStyle(
             fontSize: 14,
             height: 1.7,
@@ -185,23 +187,23 @@ class AboutSection extends StatelessWidget {
   Widget _buildPillarsGrid(BuildContext context, bool isDark) {
     final pillars = [
       (
-        'Clean & Scalable Code',
-        'Applying Clean Architecture, SOLID principles, & BLoC state management for long-term maintainability.',
+        context.l10n.pillarCleanTitle,
+        context.l10n.pillarCleanDesc,
         Icons.architecture_rounded,
       ),
       (
-        'Omnichannel & Hardware',
-        'Direct experience integrating ESC/POS Bluetooth printers, dynamic QRIS, & multi-marketplace chat.',
+        context.l10n.pillarOmniTitle,
+        context.l10n.pillarOmniDesc,
         Icons.devices_other_rounded,
       ),
       (
-        'Offline-First & Resilient',
-        'Architecting robust local persistence with Hive/SQLite & background sync.',
+        context.l10n.pillarOfflineTitle,
+        context.l10n.pillarOfflineDesc,
         Icons.sync_rounded,
       ),
       (
-        'Pixel Perfect & Responsive',
-        'Crafting fluid UI/UX adapted for mobile, tablet, and desktop viewports.',
+        context.l10n.pillarResponsiveTitle,
+        context.l10n.pillarResponsiveDesc,
         Icons.auto_awesome_rounded,
       ),
     ];

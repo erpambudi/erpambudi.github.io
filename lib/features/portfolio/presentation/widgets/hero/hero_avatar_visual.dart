@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_template/core/extensions/context_extensions.dart';
 import 'package:mobile_template/core/theme/app_colors.dart';
+import 'package:mobile_template/core/utils/l10n_extension.dart';
 
 class HeroAvatarVisual extends StatelessWidget {
   final String avatarUrl;
@@ -58,15 +59,19 @@ class HeroAvatarVisual extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          // Badges in a safe Wrap (never overflows)
+          // Badges in a safe Wrap
           Wrap(
             spacing: 8,
             runSpacing: 8,
             alignment: WrapAlignment.center,
             children: [
-              _buildBadge('Flutter Expert ⚡', AppColors.primary, isDark),
               _buildBadge(
-                'Clean Architecture 🏛️',
+                context.l10n.badgeFlutterExpert,
+                AppColors.primary,
+                isDark,
+              ),
+              _buildBadge(
+                context.l10n.badgeCleanArch,
                 AppColors.secondary,
                 isDark,
               ),

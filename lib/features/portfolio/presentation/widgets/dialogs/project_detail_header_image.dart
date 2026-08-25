@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_template/core/extensions/context_extensions.dart';
+import 'package:mobile_template/core/utils/l10n_extension.dart';
 import 'package:mobile_template/features/portfolio/domain/entities/project_entity.dart';
 import 'fullscreen_image_viewer_dialog.dart';
 
@@ -9,11 +10,12 @@ class ProjectDetailHeaderImage extends StatelessWidget {
   const ProjectDetailHeaderImage({super.key, required this.project});
 
   void _openFullScreen(BuildContext context) {
+    final locale = Localizations.localeOf(context).languageCode;
     FullScreenImageViewerDialog.show(
       context,
       imagePath: project.imagePath,
       title: project.title,
-      subtitle: project.categoryLabel,
+      subtitle: project.getCategoryLabel(locale),
     );
   }
 
@@ -57,14 +59,18 @@ class ProjectDetailHeaderImage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: Colors.white24),
               ),
-              child: const Row(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(Icons.fullscreen_rounded, size: 16, color: Colors.white),
-                  SizedBox(width: 4),
+                  const Icon(
+                    Icons.fullscreen_rounded,
+                    size: 16,
+                    color: Colors.white,
+                  ),
+                  const SizedBox(width: 4),
                   Text(
-                    'Fullscreen',
-                    style: TextStyle(
+                    context.l10n.fullscreen,
+                    style: const TextStyle(
                       fontSize: 11,
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
