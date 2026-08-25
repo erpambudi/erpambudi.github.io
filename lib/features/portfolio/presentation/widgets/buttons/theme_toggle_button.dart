@@ -14,38 +14,51 @@ class ThemeToggleButton extends StatelessWidget {
         final isDark = mode == ThemeMode.dark;
         return Tooltip(
           message: context.l10n.toggleTheme,
-          child: InkWell(
-            borderRadius: BorderRadius.circular(10),
-            onTap: () => context.read<ThemeCubit>().toggleTheme(),
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-              decoration: BoxDecoration(
-                color: isDark ? AppColors.cardDark : const Color(0xFFF1F5F9),
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                  color: isDark ? AppColors.borderDark : AppColors.borderLight,
+          child: MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: InkWell(
+              mouseCursor: SystemMouseCursors.click,
+              borderRadius: BorderRadius.circular(10),
+              onTap: () => context.read<ThemeCubit>().toggleTheme(),
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 6,
                 ),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
-                    size: 16,
-                    color: isDark ? AppColors.primaryLight : AppColors.primary,
+                decoration: BoxDecoration(
+                  color: isDark ? AppColors.cardDark : const Color(0xFFF1F5F9),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: isDark
+                        ? AppColors.borderDark
+                        : AppColors.borderLight,
                   ),
-                  const SizedBox(width: 6),
-                  Text(
-                    isDark ? context.l10n.darkMode : context.l10n.lightMode,
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      isDark
+                          ? Icons.dark_mode_rounded
+                          : Icons.light_mode_rounded,
+                      size: 16,
                       color: isDark
-                          ? AppColors.textPrimaryDark
-                          : AppColors.textPrimaryLight,
+                          ? AppColors.primaryLight
+                          : AppColors.primary,
                     ),
-                  ),
-                ],
+                    const SizedBox(width: 6),
+                    Text(
+                      isDark ? context.l10n.darkMode : context.l10n.lightMode,
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: isDark
+                            ? AppColors.textPrimaryDark
+                            : AppColors.textPrimaryLight,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

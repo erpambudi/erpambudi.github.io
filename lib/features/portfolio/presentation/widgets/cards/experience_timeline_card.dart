@@ -202,6 +202,7 @@ class _ExperienceTimelineCardState extends State<ExperienceTimelineCard> {
             if (exp.appUrl != null) ...[
               const SizedBox(height: 12),
               InkWell(
+                mouseCursor: SystemMouseCursors.click,
                 onTap: _openApp,
                 borderRadius: BorderRadius.circular(6),
                 child: Padding(

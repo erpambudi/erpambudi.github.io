@@ -30,17 +30,21 @@ class ProjectDetailHeaderImage extends StatelessWidget {
 
     return Stack(
       children: [
-        InkWell(
-          onTap: () => _openFullScreen(context),
-          child: Container(
-            height: bannerHeight,
-            width: double.infinity,
-            color: isDark ? const Color(0xFF0F172A) : const Color(0xFFE2E8F0),
-            child: Image.asset(
-              project.imagePath,
-              fit: BoxFit.cover,
-              errorBuilder: (_, error, stackTrace) => const Center(
-                child: Icon(Icons.image_not_supported_rounded, size: 48),
+        MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: InkWell(
+            mouseCursor: SystemMouseCursors.click,
+            onTap: () => _openFullScreen(context),
+            child: Container(
+              height: bannerHeight,
+              width: double.infinity,
+              color: isDark ? const Color(0xFF0F172A) : const Color(0xFFE2E8F0),
+              child: Image.asset(
+                project.imagePath,
+                fit: BoxFit.cover,
+                errorBuilder: (_, error, stackTrace) => const Center(
+                  child: Icon(Icons.image_not_supported_rounded, size: 48),
+                ),
               ),
             ),
           ),
@@ -49,34 +53,41 @@ class ProjectDetailHeaderImage extends StatelessWidget {
         Positioned(
           bottom: 12,
           right: 12,
-          child: InkWell(
-            onTap: () => _openFullScreen(context),
-            borderRadius: BorderRadius.circular(8),
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-              decoration: BoxDecoration(
-                color: Colors.black.withValues(alpha: 0.75),
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.white24),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Icon(
-                    Icons.fullscreen_rounded,
-                    size: 16,
-                    color: Colors.white,
-                  ),
-                  const SizedBox(width: 4),
-                  Text(
-                    context.l10n.fullscreen,
-                    style: const TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
+          child: MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: InkWell(
+              mouseCursor: SystemMouseCursors.click,
+              onTap: () => _openFullScreen(context),
+              borderRadius: BorderRadius.circular(8),
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 6,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.black.withValues(alpha: 0.75),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: Colors.white24),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(
+                      Icons.fullscreen_rounded,
+                      size: 16,
                       color: Colors.white,
                     ),
-                  ),
-                ],
+                    const SizedBox(width: 4),
+                    Text(
+                      context.l10n.fullscreen,
+                      style: const TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -88,6 +99,7 @@ class ProjectDetailHeaderImage extends StatelessWidget {
           child: CircleAvatar(
             backgroundColor: Colors.black54,
             child: IconButton(
+              mouseCursor: SystemMouseCursors.click,
               icon: const Icon(Icons.close_rounded, color: Colors.white),
               onPressed: () => Navigator.of(context).pop(),
             ),

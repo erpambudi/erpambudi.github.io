@@ -110,35 +110,39 @@ class ProjectsSection extends StatelessWidget {
       runSpacing: 8,
       children: filters.map((f) {
         final isSelected = selectedCategory == f.$1;
-        return InkWell(
-          borderRadius: BorderRadius.circular(8),
-          onTap: () => cubit.selectCategory(f.$1),
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 180),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            decoration: BoxDecoration(
-              color: isSelected
-                  ? AppColors.primary
-                  : (isDark ? AppColors.cardDark : const Color(0xFFF1F5F9)),
-              borderRadius: BorderRadius.circular(8),
-              border: isSelected
-                  ? null
-                  : Border.all(
-                      color: isDark
-                          ? AppColors.borderDark
-                          : AppColors.borderLight,
-                    ),
-            ),
-            child: Text(
-              f.$2,
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+        return MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: InkWell(
+            mouseCursor: SystemMouseCursors.click,
+            borderRadius: BorderRadius.circular(8),
+            onTap: () => cubit.selectCategory(f.$1),
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 180),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              decoration: BoxDecoration(
                 color: isSelected
-                    ? Colors.white
-                    : (isDark
-                          ? AppColors.textSecondaryDark
-                          : AppColors.textSecondaryLight),
+                    ? AppColors.primary
+                    : (isDark ? AppColors.cardDark : const Color(0xFFF1F5F9)),
+                borderRadius: BorderRadius.circular(8),
+                border: isSelected
+                    ? null
+                    : Border.all(
+                        color: isDark
+                            ? AppColors.borderDark
+                            : AppColors.borderLight,
+                      ),
+              ),
+              child: Text(
+                f.$2,
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+                  color: isSelected
+                      ? Colors.white
+                      : (isDark
+                            ? AppColors.textSecondaryDark
+                            : AppColors.textSecondaryLight),
+                ),
               ),
             ),
           ),

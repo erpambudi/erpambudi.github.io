@@ -70,6 +70,7 @@ class _ProjectCardState extends State<ProjectCard> {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
+            mouseCursor: SystemMouseCursors.click,
             onTap: _showDetailsModal,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

@@ -55,23 +55,27 @@ class CertificateDetailDialog extends StatelessWidget {
               // Certificate Image Banner with Fullscreen trigger
               Stack(
                 children: [
-                  InkWell(
-                    onTap: () => _openFullScreen(context),
-                    child: Container(
-                      height: certHeight,
-                      width: double.infinity,
-                      color: isDark
-                          ? const Color(0xFF0F172A)
-                          : const Color(0xFFE2E8F0),
-                      padding: const EdgeInsets.all(16),
-                      child: Image.asset(
-                        certificate.imagePath,
-                        fit: BoxFit.contain,
-                        errorBuilder: (_, error, stackTrace) => const Center(
-                          child: Icon(
-                            Icons.workspace_premium_rounded,
-                            size: 60,
-                            color: AppColors.primary,
+                  MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: InkWell(
+                      mouseCursor: SystemMouseCursors.click,
+                      onTap: () => _openFullScreen(context),
+                      child: Container(
+                        height: certHeight,
+                        width: double.infinity,
+                        color: isDark
+                            ? const Color(0xFF0F172A)
+                            : const Color(0xFFE2E8F0),
+                        padding: const EdgeInsets.all(16),
+                        child: Image.asset(
+                          certificate.imagePath,
+                          fit: BoxFit.contain,
+                          errorBuilder: (_, error, stackTrace) => const Center(
+                            child: Icon(
+                              Icons.workspace_premium_rounded,
+                              size: 60,
+                              color: AppColors.primary,
+                            ),
                           ),
                         ),
                       ),
@@ -81,37 +85,41 @@ class CertificateDetailDialog extends StatelessWidget {
                   Positioned(
                     bottom: 12,
                     right: 12,
-                    child: InkWell(
-                      onTap: () => _openFullScreen(context),
-                      borderRadius: BorderRadius.circular(8),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 6,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.black.withValues(alpha: 0.75),
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Colors.white24),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Icon(
-                              Icons.fullscreen_rounded,
-                              size: 16,
-                              color: Colors.white,
-                            ),
-                            const SizedBox(width: 4),
-                            Text(
-                              context.l10n.zoomFullscreen,
-                              style: const TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.w600,
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: InkWell(
+                        mouseCursor: SystemMouseCursors.click,
+                        onTap: () => _openFullScreen(context),
+                        borderRadius: BorderRadius.circular(8),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 6,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.black.withValues(alpha: 0.75),
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.white24),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(
+                                Icons.fullscreen_rounded,
+                                size: 16,
                                 color: Colors.white,
                               ),
-                            ),
-                          ],
+                              const SizedBox(width: 4),
+                              Text(
+                                context.l10n.zoomFullscreen,
+                                style: const TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -123,6 +131,7 @@ class CertificateDetailDialog extends StatelessWidget {
                     child: CircleAvatar(
                       backgroundColor: Colors.black54,
                       child: IconButton(
+                        mouseCursor: SystemMouseCursors.click,
                         icon: const Icon(
                           Icons.close_rounded,
                           color: Colors.white,
@@ -178,14 +187,47 @@ class CertificateDetailDialog extends StatelessWidget {
                           onPressed: _verify,
                           icon: const Icon(Icons.verified_rounded, size: 16),
                           label: Text(context.l10n.verifyCredential),
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 11,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
                         ),
                         OutlinedButton.icon(
                           onPressed: () => _openFullScreen(context),
                           icon: const Icon(Icons.fullscreen_rounded, size: 16),
                           label: Text(context.l10n.viewFullImage),
+                          style: OutlinedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 11,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            side: BorderSide(
+                              color: isDark
+                                  ? AppColors.borderDark
+                                  : AppColors.borderLight,
+                              width: 1.0,
+                            ),
+                          ),
                         ),
                         TextButton(
                           onPressed: () => Navigator.of(context).pop(),
+                          style: TextButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 11,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
                           child: Text(context.l10n.close),
                         ),
                       ],

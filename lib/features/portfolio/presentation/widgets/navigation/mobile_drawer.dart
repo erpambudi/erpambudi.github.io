@@ -24,6 +24,7 @@ class MobileDrawer extends StatelessWidget {
     Widget buildDrawerItem(String sectionKey, String label, IconData icon) {
       final isActive = activeSection == sectionKey;
       return ListTile(
+        mouseCursor: SystemMouseCursors.click,
         leading: Icon(
           icon,
           color: isActive
@@ -146,41 +147,45 @@ class MobileDrawer extends StatelessWidget {
                   BlocBuilder<LocaleCubit, Locale>(
                     builder: (context, locale) {
                       final isId = locale.languageCode == 'id';
-                      return InkWell(
-                        borderRadius: BorderRadius.circular(8),
-                        onTap: () {
-                          context.read<LocaleCubit>().changeLocale(
-                            Locale(isId ? 'en' : 'id'),
-                          );
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 8,
-                          ),
-                          decoration: BoxDecoration(
-                            color: isDark
-                                ? AppColors.cardDark
-                                : const Color(0xFFF1F5F9),
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(
-                              color: isDark
-                                  ? AppColors.borderDark
-                                  : AppColors.borderLight,
+                      return MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: InkWell(
+                          mouseCursor: SystemMouseCursors.click,
+                          borderRadius: BorderRadius.circular(8),
+                          onTap: () {
+                            context.read<LocaleCubit>().changeLocale(
+                              Locale(isId ? 'en' : 'id'),
+                            );
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 8,
                             ),
-                          ),
-                          child: Row(
-                            children: [
-                              const Icon(Icons.language_rounded, size: 16),
-                              const SizedBox(width: 6),
-                              Text(
-                                isId ? 'Bahasa (ID)' : 'English (EN)',
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                            decoration: BoxDecoration(
+                              color: isDark
+                                  ? AppColors.cardDark
+                                  : const Color(0xFFF1F5F9),
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: isDark
+                                    ? AppColors.borderDark
+                                    : AppColors.borderLight,
                               ),
-                            ],
+                            ),
+                            child: Row(
+                              children: [
+                                const Icon(Icons.language_rounded, size: 16),
+                                const SizedBox(width: 6),
+                                Text(
+                                  isId ? 'Bahasa (ID)' : 'English (EN)',
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );

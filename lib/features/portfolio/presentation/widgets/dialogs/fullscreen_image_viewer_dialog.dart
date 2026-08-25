@@ -127,6 +127,7 @@ class _FullScreenImageViewerDialogState
                   const Spacer(),
                   // Reset Zoom Button
                   IconButton.filledTonal(
+                    mouseCursor: SystemMouseCursors.click,
                     onPressed: _resetZoom,
                     style: IconButton.styleFrom(
                       backgroundColor: Colors.black54,
@@ -138,6 +139,7 @@ class _FullScreenImageViewerDialogState
                   const SizedBox(width: 10),
                   // Close Fullscreen Button
                   IconButton.filled(
+                    mouseCursor: SystemMouseCursors.click,
                     onPressed: () => Navigator.of(context).pop(),
                     style: IconButton.styleFrom(
                       backgroundColor: AppColors.primary,

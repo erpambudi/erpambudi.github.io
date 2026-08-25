@@ -114,7 +114,7 @@ class ProjectDetailDialog extends StatelessWidget {
                       }).toList(),
                     ),
                     const SizedBox(height: 20),
-                    _buildActionButtons(context),
+                    _buildActionButtons(context, isDark),
                   ],
                 ),
               ),
@@ -198,7 +198,12 @@ class ProjectDetailDialog extends StatelessWidget {
     );
   }
 
-  Widget _buildActionButtons(BuildContext context) {
+  Widget _buildActionButtons(BuildContext context, bool isDark) {
+    final btnPadding = const EdgeInsets.symmetric(horizontal: 16, vertical: 11);
+    final btnShape = RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10),
+    );
+
     return Wrap(
       spacing: 8,
       runSpacing: 8,
@@ -209,26 +214,47 @@ class ProjectDetailDialog extends StatelessWidget {
             onPressed: () => _openLink(project.playStoreUrl!),
             icon: const Icon(Icons.shop_rounded, size: 16),
             label: Text(context.l10n.googlePlay),
+            style: ElevatedButton.styleFrom(
+              padding: btnPadding,
+              shape: btnShape,
+            ),
           ),
         if (project.demoUrl != null)
           ElevatedButton.icon(
             onPressed: () => _openLink(project.demoUrl!),
             icon: const Icon(Icons.download_rounded, size: 16),
             label: Text(context.l10n.downloadDemo),
+            style: ElevatedButton.styleFrom(
+              padding: btnPadding,
+              shape: btnShape,
+            ),
           ),
         if (project.githubUrl != null)
           ElevatedButton.icon(
             onPressed: () => _openLink(project.githubUrl!),
             icon: const Icon(Icons.code_rounded, size: 16),
             label: Text(context.l10n.sourceCode),
+            style: ElevatedButton.styleFrom(
+              padding: btnPadding,
+              shape: btnShape,
+            ),
           ),
         OutlinedButton.icon(
           onPressed: () => _openFullScreen(context),
           icon: const Icon(Icons.fullscreen_rounded, size: 16),
           label: Text(context.l10n.viewFullImage),
+          style: OutlinedButton.styleFrom(
+            padding: btnPadding,
+            shape: btnShape,
+            side: BorderSide(
+              color: isDark ? AppColors.borderDark : AppColors.borderLight,
+              width: 1.0,
+            ),
+          ),
         ),
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
+          style: TextButton.styleFrom(padding: btnPadding, shape: btnShape),
           child: Text(context.l10n.close),
         ),
       ],

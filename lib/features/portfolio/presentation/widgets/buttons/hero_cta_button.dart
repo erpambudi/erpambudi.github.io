@@ -27,6 +27,7 @@ class _HeroCtaButtonState extends State<HeroCtaButton> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return MouseRegion(
+      cursor: SystemMouseCursors.click,
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
       child: AnimatedContainer(
@@ -62,6 +63,7 @@ class _HeroCtaButtonState extends State<HeroCtaButton> {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
+            mouseCursor: SystemMouseCursors.click,
             borderRadius: BorderRadius.circular(10),
             onTap: widget.onPressed,
             child: Padding(

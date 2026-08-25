@@ -29,9 +29,11 @@ class _NavItemState extends State<NavItem> {
         : (isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight);
 
     return MouseRegion(
+      cursor: SystemMouseCursors.click,
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
       child: InkWell(
+        mouseCursor: SystemMouseCursors.click,
         borderRadius: BorderRadius.circular(8),
         onTap: widget.onTap,
         child: Padding(

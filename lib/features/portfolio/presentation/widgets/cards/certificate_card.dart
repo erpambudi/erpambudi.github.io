@@ -69,6 +69,7 @@ class _CertificateCardState extends State<CertificateCard> {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
+            mouseCursor: SystemMouseCursors.click,
             onTap: _showDetail,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,6 +140,7 @@ class _CertificateCardState extends State<CertificateCard> {
                             ),
                           ),
                           InkWell(
+                            mouseCursor: SystemMouseCursors.click,
                             onTap: _verify,
                             borderRadius: BorderRadius.circular(4),
                             child: Padding(
