@@ -44,7 +44,7 @@ class _StatusIndicatorState extends State<StatusIndicator>
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
       decoration: BoxDecoration(
-        color: widget.color.withValues(alpha: 0.12),
+        color: widget.color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: widget.color.withValues(alpha: 0.3)),
       ),
@@ -63,10 +63,10 @@ class _StatusIndicatorState extends State<StatusIndicator>
                   boxShadow: [
                     BoxShadow(
                       color: widget.color.withValues(
-                        alpha: _animation.value * 0.6,
+                        alpha: _animation.value * 0.4,
                       ),
                       blurRadius: 6,
-                      spreadRadius: 2,
+                      spreadRadius: 1,
                     ),
                   ],
                 ),
@@ -74,12 +74,16 @@ class _StatusIndicatorState extends State<StatusIndicator>
             },
           ),
           const SizedBox(width: 8),
-          Text(
-            widget.text,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: widget.color,
+          Flexible(
+            child: Text(
+              widget.text,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: widget.color,
+              ),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
             ),
           ),
         ],

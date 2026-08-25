@@ -41,23 +41,20 @@ class _ProjectCardState extends State<ProjectCard> {
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 220),
+        duration: const Duration(milliseconds: 180),
         decoration: BoxDecoration(
           color: isDark ? AppColors.cardDark : AppColors.surfaceLight,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: _isHovered
-                ? AppColors.primary.withValues(alpha: 0.7)
+                ? AppColors.primary.withValues(alpha: 0.5)
                 : (isDark ? AppColors.borderDark : AppColors.borderLight),
-            width: _isHovered ? 1.5 : 1.0,
           ),
           boxShadow: [
             BoxShadow(
-              color: _isHovered
-                  ? AppColors.primary.withValues(alpha: 0.2)
-                  : Colors.black.withValues(alpha: isDark ? 0.25 : 0.05),
-              blurRadius: _isHovered ? 20 : 10,
-              offset: const Offset(0, 6),
+              color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.04),
+              blurRadius: _isHovered ? 14 : 6,
+              offset: const Offset(0, 3),
             ),
           ],
         ),
@@ -69,7 +66,7 @@ class _ProjectCardState extends State<ProjectCard> {
             Stack(
               children: [
                 Container(
-                  height: 180,
+                  height: 170,
                   width: double.infinity,
                   color: isDark
                       ? const Color(0xFF0F172A)
@@ -89,24 +86,21 @@ class _ProjectCardState extends State<ProjectCard> {
                   ),
                 ),
                 Positioned(
-                  top: 12,
-                  left: 12,
+                  top: 10,
+                  left: 10,
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 4,
+                      horizontal: 8,
+                      vertical: 3,
                     ),
                     decoration: BoxDecoration(
                       color: Colors.black.withValues(alpha: 0.75),
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                        color: Colors.white.withValues(alpha: 0.2),
-                      ),
+                      borderRadius: BorderRadius.circular(6),
                     ),
                     child: Text(
                       proj.categoryLabel,
                       style: const TextStyle(
-                        fontSize: 11,
+                        fontSize: 10,
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
                       ),
@@ -115,35 +109,24 @@ class _ProjectCardState extends State<ProjectCard> {
                 ),
                 if (proj.isFeatured)
                   Positioned(
-                    top: 12,
-                    right: 12,
+                    top: 10,
+                    right: 10,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 8,
-                        vertical: 4,
+                        vertical: 3,
                       ),
                       decoration: BoxDecoration(
-                        gradient: AppColors.primaryGradient,
-                        borderRadius: BorderRadius.circular(8),
+                        color: AppColors.primary,
+                        borderRadius: BorderRadius.circular(6),
                       ),
-                      child: const Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            Icons.star_rounded,
-                            size: 12,
-                            color: Colors.white,
-                          ),
-                          SizedBox(width: 4),
-                          Text(
-                            'Featured',
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
+                      child: const Text(
+                        'Featured',
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
@@ -151,21 +134,23 @@ class _ProjectCardState extends State<ProjectCard> {
             ),
             // Content
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(18),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     proj.title,
                     style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w800,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
                       color: isDark
                           ? AppColors.textPrimaryDark
                           : AppColors.textPrimaryLight,
                     ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 4),
                   Text(
                     proj.subtitle,
                     style: TextStyle(
@@ -178,22 +163,22 @@ class _ProjectCardState extends State<ProjectCard> {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 14),
+                  const SizedBox(height: 12),
                   // Platforms
                   Wrap(
-                    spacing: 6,
-                    runSpacing: 6,
+                    spacing: 5,
+                    runSpacing: 5,
                     children: proj.platforms.map((platform) {
                       return Container(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 3,
+                          horizontal: 7,
+                          vertical: 2,
                         ),
                         decoration: BoxDecoration(
                           color: isDark
                               ? AppColors.cardDarkHover
                               : const Color(0xFFF1F5F9),
-                          borderRadius: BorderRadius.circular(6),
+                          borderRadius: BorderRadius.circular(4),
                         ),
                         child: Text(
                           platform,
@@ -208,16 +193,16 @@ class _ProjectCardState extends State<ProjectCard> {
                       );
                     }).toList(),
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 10),
                   // Tech Stack
                   Wrap(
-                    spacing: 6,
-                    runSpacing: 6,
-                    children: proj.technologies.take(4).map((tech) {
+                    spacing: 5,
+                    runSpacing: 5,
+                    children: proj.technologies.take(3).map((tech) {
                       return SkillChip(label: tech);
                     }).toList(),
                   ),
-                  const SizedBox(height: 18),
+                  const SizedBox(height: 16),
                   // Action Buttons
                   Row(
                     children: [
@@ -225,14 +210,14 @@ class _ProjectCardState extends State<ProjectCard> {
                         child: OutlinedButton(
                           onPressed: _showDetailsModal,
                           style: OutlinedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            padding: const EdgeInsets.symmetric(vertical: 8),
                             side: BorderSide(
                               color: isDark
                                   ? AppColors.borderDark
                                   : AppColors.borderLight,
                             ),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(8),
                             ),
                           ),
                           child: Text(
@@ -262,16 +247,16 @@ class _ProjectCardState extends State<ProjectCard> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.primary,
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 14,
-                              vertical: 10,
+                              horizontal: 12,
+                              vertical: 8,
                             ),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(8),
                             ),
                           ),
                           child: const Icon(
                             Icons.open_in_new_rounded,
-                            size: 16,
+                            size: 15,
                             color: Colors.white,
                           ),
                         ),

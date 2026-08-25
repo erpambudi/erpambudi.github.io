@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_template/core/extensions/context_extensions.dart';
 import 'package:mobile_template/core/theme/app_colors.dart';
 import 'package:mobile_template/core/utils/l10n_extension.dart';
 import 'package:mobile_template/features/portfolio/domain/entities/profile_entity.dart';
@@ -17,9 +18,10 @@ class FooterSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDesktop = context.isDesktop;
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 36),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
       decoration: BoxDecoration(
         color: isDark ? AppColors.surfaceDark : const Color(0xFFF1F5F9),
         border: Border(
@@ -37,12 +39,12 @@ class FooterSection extends StatelessWidget {
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 6,
+                      horizontal: 8,
+                      vertical: 5,
                     ),
                     decoration: BoxDecoration(
-                      gradient: AppColors.primaryGradient,
-                      borderRadius: BorderRadius.circular(8),
+                      color: AppColors.primary,
+                      borderRadius: BorderRadius.circular(6),
                     ),
                     child: const Text(
                       'RP',
@@ -57,7 +59,7 @@ class FooterSection extends StatelessWidget {
                   Text(
                     'Rizki Pambudi',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 15,
                       fontWeight: FontWeight.w700,
                       color: isDark
                           ? AppColors.textPrimaryDark
@@ -66,23 +68,81 @@ class FooterSection extends StatelessWidget {
                   ),
                 ],
               ),
-              // Back to Top Button
               IconButton.filledTonal(
                 onPressed: onBackToTop,
-                icon: const Icon(Icons.arrow_upward_rounded, size: 20),
+                icon: const Icon(Icons.arrow_upward_rounded, size: 18),
                 tooltip: 'Back to Top',
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 16),
           const Divider(),
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Flexible(
-                child: Text(
+          const SizedBox(height: 16),
+          if (isDesktop)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: Text(
+                    context.l10n.copyright,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: isDark
+                          ? AppColors.textMutedDark
+                          : AppColors.textMutedLight,
+                    ),
+                  ),
+                ),
+                Wrap(
+                  spacing: 8,
+                  children: [
+                    SocialIconButton(
+                      icon: Icons.code_rounded,
+                      url: profile.githubUrl,
+                      tooltip: 'GitHub',
+                    ),
+                    SocialIconButton(
+                      icon: Icons.work_rounded,
+                      url: profile.linkedInUrl,
+                      tooltip: 'LinkedIn',
+                    ),
+                    SocialIconButton(
+                      icon: Icons.chat_rounded,
+                      url: profile.whatsAppUrl,
+                      tooltip: 'WhatsApp',
+                    ),
+                  ],
+                ),
+              ],
+            )
+          else
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Wrap(
+                  spacing: 10,
+                  children: [
+                    SocialIconButton(
+                      icon: Icons.code_rounded,
+                      url: profile.githubUrl,
+                      tooltip: 'GitHub',
+                    ),
+                    SocialIconButton(
+                      icon: Icons.work_rounded,
+                      url: profile.linkedInUrl,
+                      tooltip: 'LinkedIn',
+                    ),
+                    SocialIconButton(
+                      icon: Icons.chat_rounded,
+                      url: profile.whatsAppUrl,
+                      tooltip: 'WhatsApp',
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                Text(
                   context.l10n.copyright,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 12,
                     color: isDark
@@ -90,29 +150,8 @@ class FooterSection extends StatelessWidget {
                         : AppColors.textMutedLight,
                   ),
                 ),
-              ),
-              Wrap(
-                spacing: 8,
-                children: [
-                  SocialIconButton(
-                    icon: Icons.code_rounded,
-                    url: profile.githubUrl,
-                    tooltip: 'GitHub',
-                  ),
-                  SocialIconButton(
-                    icon: Icons.work_rounded,
-                    url: profile.linkedInUrl,
-                    tooltip: 'LinkedIn',
-                  ),
-                  SocialIconButton(
-                    icon: Icons.chat_rounded,
-                    url: profile.whatsAppUrl,
-                    tooltip: 'WhatsApp',
-                  ),
-                ],
-              ),
-            ],
-          ),
+              ],
+            ),
         ],
       ),
     );

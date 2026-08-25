@@ -21,15 +21,13 @@ class ExperienceSection extends StatelessWidget {
           tablet: 36.0,
           desktop: 64.0,
         ),
-        vertical: 48,
+        vertical: 40,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Section Title
           _buildSectionHeader(context, isDark),
-          const SizedBox(height: 32),
-          // Timeline Cards
+          const SizedBox(height: 28),
           ...experiences.asMap().entries.map((entry) {
             final index = entry.key;
             final exp = entry.value;
@@ -51,37 +49,37 @@ class ExperienceSection extends StatelessWidget {
         Row(
           children: [
             Container(
-              width: 32,
+              width: 24,
               height: 3,
               decoration: BoxDecoration(
-                gradient: AppColors.primaryGradient,
+                color: AppColors.primary,
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 8),
             Text(
               context.l10n.navExperience.toUpperCase(),
               style: const TextStyle(
-                fontSize: 14,
+                fontSize: 13,
                 fontWeight: FontWeight.w700,
                 color: AppColors.primary,
-                letterSpacing: 1.5,
+                letterSpacing: 1.2,
               ),
             ),
           ],
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 6),
         Text(
           context.l10n.experienceTitle,
           style: TextStyle(
-            fontSize: 26,
+            fontSize: 24,
             fontWeight: FontWeight.w800,
             color: isDark
                 ? AppColors.textPrimaryDark
                 : AppColors.textPrimaryLight,
           ),
         ),
-        const SizedBox(height: 6),
+        const SizedBox(height: 4),
         Text(
           context.l10n.experienceSubtitle,
           style: TextStyle(

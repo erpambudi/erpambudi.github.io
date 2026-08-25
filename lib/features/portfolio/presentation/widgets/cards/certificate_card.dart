@@ -41,23 +41,20 @@ class _CertificateCardState extends State<CertificateCard> {
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 180),
         decoration: BoxDecoration(
           color: isDark ? AppColors.cardDark : AppColors.surfaceLight,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: _isHovered
-                ? AppColors.primary.withValues(alpha: 0.6)
+                ? AppColors.primary.withValues(alpha: 0.5)
                 : (isDark ? AppColors.borderDark : AppColors.borderLight),
-            width: _isHovered ? 1.5 : 1.0,
           ),
           boxShadow: [
             BoxShadow(
-              color: _isHovered
-                  ? AppColors.primary.withValues(alpha: 0.15)
-                  : Colors.black.withValues(alpha: isDark ? 0.2 : 0.03),
-              blurRadius: _isHovered ? 16 : 8,
-              offset: const Offset(0, 4),
+              color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.03),
+              blurRadius: _isHovered ? 12 : 6,
+              offset: const Offset(0, 2),
             ),
           ],
         ),
@@ -68,7 +65,7 @@ class _CertificateCardState extends State<CertificateCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                height: 140,
+                height: 130,
                 width: double.infinity,
                 color: isDark
                     ? const Color(0xFF0F172A)
@@ -77,19 +74,23 @@ class _CertificateCardState extends State<CertificateCard> {
                   cert.imagePath,
                   fit: BoxFit.cover,
                   errorBuilder: (_, error, stackTrace) => const Center(
-                    child: Icon(Icons.workspace_premium_rounded, size: 40),
+                    child: Icon(
+                      Icons.workspace_premium_rounded,
+                      size: 36,
+                      color: AppColors.primary,
+                    ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(14),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       cert.title,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 13,
                         fontWeight: FontWeight.w700,
                         color: isDark
                             ? AppColors.textPrimaryDark
@@ -102,21 +103,23 @@ class _CertificateCardState extends State<CertificateCard> {
                     Text(
                       '${cert.issuer} • ${cert.year}',
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 11,
                         fontWeight: FontWeight.w500,
                         color: isDark
                             ? AppColors.textSecondaryDark
                             : AppColors.textSecondaryLight,
                       ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 10),
                     Row(
                       children: [
                         Expanded(
                           child: Text(
                             cert.credentialId,
                             style: TextStyle(
-                              fontSize: 11,
+                              fontSize: 10,
                               fontWeight: FontWeight.w500,
                               color: isDark
                                   ? AppColors.textMutedDark
@@ -128,10 +131,10 @@ class _CertificateCardState extends State<CertificateCard> {
                         ),
                         InkWell(
                           onTap: _verify,
-                          borderRadius: BorderRadius.circular(6),
+                          borderRadius: BorderRadius.circular(4),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 6,
+                              horizontal: 4,
                               vertical: 2,
                             ),
                             child: Row(
@@ -139,14 +142,14 @@ class _CertificateCardState extends State<CertificateCard> {
                               children: [
                                 const Icon(
                                   Icons.verified_rounded,
-                                  size: 14,
+                                  size: 13,
                                   color: AppColors.primary,
                                 ),
-                                const SizedBox(width: 4),
+                                const SizedBox(width: 3),
                                 Text(
                                   context.l10n.verifyCredential,
                                   style: const TextStyle(
-                                    fontSize: 11,
+                                    fontSize: 10,
                                     fontWeight: FontWeight.w600,
                                     color: AppColors.primary,
                                   ),

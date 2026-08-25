@@ -31,6 +31,11 @@ class HeroTextContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final isDesktop = context.isDesktop;
+    final nameFontSize = context.responsiveValue(
+      mobile: 28.0,
+      tablet: 34.0,
+      desktop: 40.0,
+    );
 
     return Column(
       crossAxisAlignment: isDesktop
@@ -38,58 +43,56 @@ class HeroTextContent extends StatelessWidget {
           : CrossAxisAlignment.center,
       children: [
         StatusIndicator(text: context.l10n.availableForWork),
-        const SizedBox(height: 18),
+        const SizedBox(height: 16),
         Text(
           context.l10n.heroGreeting,
           style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
             color: isDark
                 ? AppColors.textSecondaryDark
                 : AppColors.textSecondaryLight,
           ),
         ),
         const SizedBox(height: 6),
-        ShaderMask(
-          shaderCallback: (bounds) =>
-              AppColors.heroGradient.createShader(bounds),
-          child: Text(
-            profile.name,
-            textAlign: isDesktop ? TextAlign.start : TextAlign.center,
-            style: const TextStyle(
-              fontSize: 44,
-              fontWeight: FontWeight.w900,
-              color: Colors.white,
-              letterSpacing: -0.5,
-            ),
+        Text(
+          profile.name,
+          textAlign: isDesktop ? TextAlign.start : TextAlign.center,
+          style: TextStyle(
+            fontSize: nameFontSize,
+            fontWeight: FontWeight.w800,
+            color: isDark
+                ? AppColors.textPrimaryDark
+                : AppColors.textPrimaryLight,
+            letterSpacing: -0.5,
           ),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 6),
         Text(
           profile.title,
           textAlign: isDesktop ? TextAlign.start : TextAlign.center,
           style: const TextStyle(
-            fontSize: 22,
+            fontSize: 18,
             fontWeight: FontWeight.w700,
             color: AppColors.primary,
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 14),
         Text(
           profile.tagline,
           textAlign: isDesktop ? TextAlign.start : TextAlign.center,
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 14,
             height: 1.6,
             color: isDark
                 ? AppColors.textSecondaryDark
                 : AppColors.textSecondaryLight,
           ),
         ),
-        const SizedBox(height: 28),
+        const SizedBox(height: 24),
         Wrap(
-          spacing: 14,
-          runSpacing: 14,
+          spacing: 12,
+          runSpacing: 12,
           alignment: isDesktop ? WrapAlignment.start : WrapAlignment.center,
           children: [
             HeroCtaButton(
@@ -112,10 +115,10 @@ class HeroTextContent extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 28),
+        const SizedBox(height: 24),
         Wrap(
-          spacing: 12,
-          runSpacing: 12,
+          spacing: 10,
+          runSpacing: 10,
           alignment: isDesktop ? WrapAlignment.start : WrapAlignment.center,
           children: [
             SocialIconButton(
@@ -128,25 +131,25 @@ class HeroTextContent extends StatelessWidget {
               icon: Icons.work_rounded,
               url: profile.linkedInUrl,
               tooltip: 'LinkedIn Profile',
-              hoverColor: AppColors.secondary,
+              hoverColor: AppColors.primary,
             ),
             SocialIconButton(
               icon: Icons.chat_rounded,
               url: profile.whatsAppUrl,
               tooltip: 'WhatsApp Chat',
-              hoverColor: AppColors.accent,
+              hoverColor: AppColors.primary,
             ),
             SocialIconButton(
               icon: Icons.email_rounded,
               url: 'mailto:${profile.email}',
               tooltip: 'Send Email',
-              hoverColor: AppColors.pink,
+              hoverColor: AppColors.primary,
             ),
             SocialIconButton(
               icon: Icons.camera_alt_rounded,
               url: profile.instagramUrl,
               tooltip: 'Instagram',
-              hoverColor: AppColors.purple,
+              hoverColor: AppColors.primary,
             ),
           ],
         ),

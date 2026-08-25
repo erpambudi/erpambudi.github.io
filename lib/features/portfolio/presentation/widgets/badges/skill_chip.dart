@@ -19,8 +19,8 @@ class SkillChip extends StatelessWidget {
 
     final bg = isPrimary
         ? (isDark
-              ? AppColors.primary.withValues(alpha: 0.15)
-              : AppColors.primaryLight.withValues(alpha: 0.25))
+              ? AppColors.primary.withValues(alpha: 0.12)
+              : AppColors.primaryLight.withValues(alpha: 0.15))
         : (isDark ? AppColors.cardDarkHover : const Color(0xFFF1F5F9));
 
     final textColor = isPrimary
@@ -28,11 +28,11 @@ class SkillChip extends StatelessWidget {
         : (isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight);
 
     final borderColor = isPrimary
-        ? AppColors.primary.withValues(alpha: 0.4)
+        ? AppColors.primary.withValues(alpha: 0.35)
         : (isDark ? AppColors.borderDark : AppColors.borderLight);
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 5),
       decoration: BoxDecoration(
         color: bg,
         borderRadius: BorderRadius.circular(8),
@@ -41,10 +41,6 @@ class SkillChip extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (isPrimary) ...[
-            const Icon(Icons.star_rounded, size: 14, color: AppColors.amber),
-            const SizedBox(width: 4),
-          ],
           Text(
             label,
             style: TextStyle(
@@ -68,7 +64,7 @@ class SkillChip extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   color: isDark
                       ? AppColors.textMutedDark
-                      : AppColors.textSecondaryLight,
+                      : AppColors.textMutedLight,
                 ),
               ),
             ),

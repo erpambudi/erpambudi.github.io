@@ -26,19 +26,19 @@ class HeroMetricsGrid extends StatelessWidget {
         value: '${profile.productionApps}+',
         label: context.l10n.appsShipped,
         icon: Icons.rocket_launch_rounded,
-        accentColor: AppColors.secondary,
+        accentColor: AppColors.primary,
       ),
       MetricStatCard(
         value: profile.activeUsers,
         label: context.l10n.happyUsers,
         icon: Icons.people_alt_rounded,
-        accentColor: AppColors.accent,
+        accentColor: AppColors.primary,
       ),
       MetricStatCard(
         value: '${profile.certificationsCount}',
         label: context.l10n.certifiedSkills,
         icon: Icons.verified_rounded,
-        accentColor: AppColors.purple,
+        accentColor: AppColors.primary,
       ),
     ];
 
@@ -48,7 +48,7 @@ class HeroMetricsGrid extends StatelessWidget {
             .map(
               (c) => Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 6),
                   child: c,
                 ),
               ),
@@ -61,15 +61,15 @@ class HeroMetricsGrid extends StatelessWidget {
           Row(
             children: [
               Expanded(child: cards[0]),
-              const SizedBox(width: 14),
+              const SizedBox(width: 12),
               Expanded(child: cards[1]),
             ],
           ),
-          const SizedBox(height: 14),
+          const SizedBox(height: 12),
           Row(
             children: [
               Expanded(child: cards[2]),
-              const SizedBox(width: 14),
+              const SizedBox(width: 12),
               Expanded(child: cards[3]),
             ],
           ),
@@ -80,7 +80,7 @@ class HeroMetricsGrid extends StatelessWidget {
         children: cards
             .map(
               (c) =>
-                  Padding(padding: const EdgeInsets.only(bottom: 12), child: c),
+                  Padding(padding: const EdgeInsets.only(bottom: 10), child: c),
             )
             .toList(),
       );

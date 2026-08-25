@@ -23,15 +23,13 @@ class SkillsSection extends StatelessWidget {
           tablet: 36.0,
           desktop: 64.0,
         ),
-        vertical: 48,
+        vertical: 40,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Section Title
           _buildSectionHeader(context, isDark),
-          const SizedBox(height: 32),
-          // Skills Matrix
+          const SizedBox(height: 28),
           _buildSkillsGrid(context, isDesktop, isTablet),
         ],
       ),
@@ -45,37 +43,37 @@ class SkillsSection extends StatelessWidget {
         Row(
           children: [
             Container(
-              width: 32,
+              width: 24,
               height: 3,
               decoration: BoxDecoration(
-                gradient: AppColors.primaryGradient,
+                color: AppColors.primary,
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 8),
             Text(
               context.l10n.navSkills.toUpperCase(),
               style: const TextStyle(
-                fontSize: 14,
+                fontSize: 13,
                 fontWeight: FontWeight.w700,
                 color: AppColors.primary,
-                letterSpacing: 1.5,
+                letterSpacing: 1.2,
               ),
             ),
           ],
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 6),
         Text(
           context.l10n.skillsTitle,
           style: TextStyle(
-            fontSize: 26,
+            fontSize: 24,
             fontWeight: FontWeight.w800,
             color: isDark
                 ? AppColors.textPrimaryDark
                 : AppColors.textPrimaryLight,
           ),
         ),
-        const SizedBox(height: 6),
+        const SizedBox(height: 4),
         Text(
           context.l10n.skillsSubtitle,
           style: TextStyle(
@@ -91,7 +89,6 @@ class SkillsSection extends StatelessWidget {
 
   Widget _buildSkillsGrid(BuildContext context, bool isDesktop, bool isTablet) {
     if (isDesktop) {
-      // 2-column or 3-column layout
       final leftColumn = <SkillCategoryEntity>[];
       final rightColumn = <SkillCategoryEntity>[];
 
@@ -111,20 +108,20 @@ class SkillsSection extends StatelessWidget {
               children: leftColumn
                   .map(
                     (c) => Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
+                      padding: const EdgeInsets.only(bottom: 16),
                       child: SkillCategoryCard(category: c),
                     ),
                   )
                   .toList(),
             ),
           ),
-          const SizedBox(width: 24),
+          const SizedBox(width: 20),
           Expanded(
             child: Column(
               children: rightColumn
                   .map(
                     (c) => Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
+                      padding: const EdgeInsets.only(bottom: 16),
                       child: SkillCategoryCard(category: c),
                     ),
                   )
@@ -138,7 +135,7 @@ class SkillsSection extends StatelessWidget {
         children: skillCategories
             .map(
               (c) => Padding(
-                padding: const EdgeInsets.only(bottom: 16),
+                padding: const EdgeInsets.only(bottom: 14),
                 child: SkillCategoryCard(category: c),
               ),
             )

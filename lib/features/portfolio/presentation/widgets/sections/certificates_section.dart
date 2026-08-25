@@ -23,15 +23,13 @@ class CertificatesSection extends StatelessWidget {
           tablet: 36.0,
           desktop: 64.0,
         ),
-        vertical: 48,
+        vertical: 40,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Section Title
           _buildSectionHeader(context, isDark),
-          const SizedBox(height: 32),
-          // Certificates Grid
+          const SizedBox(height: 28),
           _buildCertificatesGrid(context, isDesktop, isTablet),
         ],
       ),
@@ -45,37 +43,37 @@ class CertificatesSection extends StatelessWidget {
         Row(
           children: [
             Container(
-              width: 32,
+              width: 24,
               height: 3,
               decoration: BoxDecoration(
-                gradient: AppColors.primaryGradient,
+                color: AppColors.primary,
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 8),
             Text(
               context.l10n.navCertificates.toUpperCase(),
               style: const TextStyle(
-                fontSize: 14,
+                fontSize: 13,
                 fontWeight: FontWeight.w700,
                 color: AppColors.primary,
-                letterSpacing: 1.5,
+                letterSpacing: 1.2,
               ),
             ),
           ],
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 6),
         Text(
           context.l10n.certificatesTitle,
           style: TextStyle(
-            fontSize: 26,
+            fontSize: 24,
             fontWeight: FontWeight.w800,
             color: isDark
                 ? AppColors.textPrimaryDark
                 : AppColors.textPrimaryLight,
           ),
         ),
-        const SizedBox(height: 6),
+        const SizedBox(height: 4),
         Text(
           context.l10n.certificatesSubtitle,
           style: TextStyle(
@@ -113,33 +111,33 @@ class CertificatesSection extends StatelessWidget {
               children: col1
                   .map(
                     (c) => Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
+                      padding: const EdgeInsets.only(bottom: 16),
                       child: CertificateCard(certificate: c),
                     ),
                   )
                   .toList(),
             ),
           ),
-          const SizedBox(width: 20),
+          const SizedBox(width: 16),
           Expanded(
             child: Column(
               children: col2
                   .map(
                     (c) => Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
+                      padding: const EdgeInsets.only(bottom: 16),
                       child: CertificateCard(certificate: c),
                     ),
                   )
                   .toList(),
             ),
           ),
-          const SizedBox(width: 20),
+          const SizedBox(width: 16),
           Expanded(
             child: Column(
               children: col3
                   .map(
                     (c) => Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
+                      padding: const EdgeInsets.only(bottom: 16),
                       child: CertificateCard(certificate: c),
                     ),
                   )
@@ -165,20 +163,20 @@ class CertificatesSection extends StatelessWidget {
               children: col1
                   .map(
                     (c) => Padding(
-                      padding: const EdgeInsets.only(bottom: 16),
+                      padding: const EdgeInsets.only(bottom: 14),
                       child: CertificateCard(certificate: c),
                     ),
                   )
                   .toList(),
             ),
           ),
-          const SizedBox(width: 16),
+          const SizedBox(width: 14),
           Expanded(
             child: Column(
               children: col2
                   .map(
                     (c) => Padding(
-                      padding: const EdgeInsets.only(bottom: 16),
+                      padding: const EdgeInsets.only(bottom: 14),
                       child: CertificateCard(certificate: c),
                     ),
                   )
@@ -192,7 +190,7 @@ class CertificatesSection extends StatelessWidget {
         children: certificates
             .map(
               (c) => Padding(
-                padding: const EdgeInsets.only(bottom: 16),
+                padding: const EdgeInsets.only(bottom: 14),
                 child: CertificateCard(certificate: c),
               ),
             )

@@ -29,87 +29,75 @@ class _HeroCtaButtonState extends State<HeroCtaButton> {
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
-      child: AnimatedScale(
-        scale: _isHovered ? 1.04 : 1.0,
+      child: AnimatedContainer(
         duration: const Duration(milliseconds: 180),
-        curve: Curves.easeOut,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          decoration: BoxDecoration(
-            gradient: widget.isPrimary ? AppColors.primaryGradient : null,
-            color: widget.isPrimary
-                ? null
-                : (_isHovered
-                      ? (isDark
-                            ? AppColors.primary.withValues(alpha: 0.15)
-                            : AppColors.primaryLight.withValues(alpha: 0.2))
-                      : (isDark ? AppColors.cardDark : Colors.white)),
-            borderRadius: BorderRadius.circular(12),
-            border: widget.isPrimary
-                ? null
-                : Border.all(
-                    color: _isHovered
-                        ? AppColors.primary
-                        : (isDark
-                              ? AppColors.borderDark
-                              : AppColors.borderLight),
-                    width: 1.5,
+        decoration: BoxDecoration(
+          color: widget.isPrimary
+              ? (_isHovered ? AppColors.primaryDark : AppColors.primary)
+              : (_isHovered
+                    ? (isDark
+                          ? AppColors.primary.withValues(alpha: 0.1)
+                          : AppColors.primaryLight.withValues(alpha: 0.15))
+                    : (isDark ? AppColors.cardDark : Colors.white)),
+          borderRadius: BorderRadius.circular(10),
+          border: widget.isPrimary
+              ? null
+              : Border.all(
+                  color: _isHovered
+                      ? AppColors.primary
+                      : (isDark ? AppColors.borderDark : AppColors.borderLight),
+                ),
+          boxShadow: widget.isPrimary
+              ? [
+                  BoxShadow(
+                    color: AppColors.primary.withValues(
+                      alpha: _isHovered ? 0.3 : 0.15,
+                    ),
+                    blurRadius: _isHovered ? 12 : 6,
+                    offset: const Offset(0, 2),
                   ),
-            boxShadow: widget.isPrimary
-                ? [
-                    BoxShadow(
-                      color: AppColors.primary.withValues(
-                        alpha: _isHovered ? 0.45 : 0.25,
-                      ),
-                      blurRadius: _isHovered ? 16 : 8,
-                      offset: const Offset(0, 4),
+                ]
+              : null,
+        ),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            borderRadius: BorderRadius.circular(10),
+            onTap: widget.onPressed,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (widget.icon != null) ...[
+                    Icon(
+                      widget.icon,
+                      size: 16,
+                      color: widget.isPrimary
+                          ? Colors.white
+                          : (_isHovered
+                                ? AppColors.primary
+                                : (isDark
+                                      ? AppColors.textPrimaryDark
+                                      : AppColors.textPrimaryLight)),
                     ),
-                  ]
-                : null,
-          ),
-          child: Material(
-            color: Colors.transparent,
-            child: InkWell(
-              borderRadius: BorderRadius.circular(12),
-              onTap: widget.onPressed,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 22,
-                  vertical: 13,
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    if (widget.icon != null) ...[
-                      Icon(
-                        widget.icon,
-                        size: 18,
-                        color: widget.isPrimary
-                            ? Colors.white
-                            : (_isHovered
-                                  ? AppColors.primary
-                                  : (isDark
-                                        ? AppColors.textPrimaryDark
-                                        : AppColors.textPrimaryLight)),
-                      ),
-                      const SizedBox(width: 8),
-                    ],
-                    Text(
-                      widget.label,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: widget.isPrimary
-                            ? Colors.white
-                            : (_isHovered
-                                  ? AppColors.primary
-                                  : (isDark
-                                        ? AppColors.textPrimaryDark
-                                        : AppColors.textPrimaryLight)),
-                      ),
-                    ),
+                    const SizedBox(width: 8),
                   ],
-                ),
+                  Text(
+                    widget.label,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: widget.isPrimary
+                          ? Colors.white
+                          : (_isHovered
+                                ? AppColors.primary
+                                : (isDark
+                                      ? AppColors.textPrimaryDark
+                                      : AppColors.textPrimaryLight)),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

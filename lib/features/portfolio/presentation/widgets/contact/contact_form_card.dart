@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:mobile_template/core/extensions/context_extensions.dart';
 import 'package:mobile_template/core/theme/app_colors.dart';
 import 'package:mobile_template/core/utils/l10n_extension.dart';
 import 'package:mobile_template/features/portfolio/domain/entities/profile_entity.dart';
@@ -61,12 +62,17 @@ class _ContactFormCardState extends State<ContactFormCard> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final paddingVal = context.responsiveValue(
+      mobile: 16.0,
+      tablet: 22.0,
+      desktop: 24.0,
+    );
 
     return Container(
-      padding: const EdgeInsets.all(28),
+      padding: EdgeInsets.all(paddingVal),
       decoration: BoxDecoration(
         color: isDark ? AppColors.cardDark : AppColors.surfaceLight,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: isDark ? AppColors.borderDark : AppColors.borderLight,
         ),
@@ -80,24 +86,24 @@ class _ContactFormCardState extends State<ContactFormCard> {
               controller: _nameController,
               decoration: InputDecoration(
                 labelText: context.l10n.name,
-                prefixIcon: const Icon(Icons.person_rounded, size: 20),
+                prefixIcon: const Icon(Icons.person_rounded, size: 18),
               ),
               validator: (v) => (v == null || v.trim().isEmpty)
                   ? 'Please enter your name'
                   : null,
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 14),
             TextFormField(
               controller: _subjectController,
               decoration: InputDecoration(
                 labelText: context.l10n.subject,
-                prefixIcon: const Icon(Icons.subject_rounded, size: 20),
+                prefixIcon: const Icon(Icons.subject_rounded, size: 18),
               ),
               validator: (v) => (v == null || v.trim().isEmpty)
                   ? 'Please enter a subject'
                   : null,
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 14),
             TextFormField(
               controller: _messageController,
               maxLines: 4,
@@ -105,23 +111,23 @@ class _ContactFormCardState extends State<ContactFormCard> {
                 labelText: context.l10n.message,
                 alignLabelWithHint: true,
                 prefixIcon: const Padding(
-                  padding: EdgeInsets.only(bottom: 50),
-                  child: Icon(Icons.chat_bubble_rounded, size: 20),
+                  padding: EdgeInsets.only(bottom: 40),
+                  child: Icon(Icons.chat_bubble_rounded, size: 18),
                 ),
               ),
               validator: (v) => (v == null || v.trim().isEmpty)
                   ? 'Please write your message'
                   : null,
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 20),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton.icon(
                 onPressed: _submitForm,
-                icon: const Icon(Icons.send_rounded, size: 18),
+                icon: const Icon(Icons.send_rounded, size: 16),
                 label: Text(context.l10n.sendMessage),
                 style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  padding: const EdgeInsets.symmetric(vertical: 12),
                 ),
               ),
             ),

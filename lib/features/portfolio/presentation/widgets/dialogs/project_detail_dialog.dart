@@ -24,12 +24,12 @@ class ProjectDetailDialog extends StatelessWidget {
 
     return Dialog(
       backgroundColor: isDark ? AppColors.cardDark : AppColors.surfaceLight,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       clipBehavior: Clip.antiAlias,
-      insetPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+      insetPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
       child: ConstrainedBox(
         constraints: BoxConstraints(
-          maxWidth: 680,
+          maxWidth: 640,
           maxHeight: size.height * 0.85,
         ),
         child: SingleChildScrollView(
@@ -41,7 +41,7 @@ class ProjectDetailDialog extends StatelessWidget {
               Stack(
                 children: [
                   Container(
-                    height: 240,
+                    height: 220,
                     width: double.infinity,
                     color: isDark
                         ? const Color(0xFF0F172A)
@@ -52,14 +52,14 @@ class ProjectDetailDialog extends StatelessWidget {
                       errorBuilder: (_, error, stackTrace) => const Center(
                         child: Icon(
                           Icons.image_not_supported_rounded,
-                          size: 50,
+                          size: 48,
                         ),
                       ),
                     ),
                   ),
                   Positioned(
-                    top: 16,
-                    right: 16,
+                    top: 12,
+                    right: 12,
                     child: CircleAvatar(
                       backgroundColor: Colors.black54,
                       child: IconButton(
@@ -74,11 +74,13 @@ class ProjectDetailDialog extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(24),
+                padding: const EdgeInsets.all(20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
+                    Wrap(
+                      spacing: 6,
+                      runSpacing: 6,
                       children: [
                         Container(
                           padding: const EdgeInsets.symmetric(
@@ -86,8 +88,8 @@ class ProjectDetailDialog extends StatelessWidget {
                             vertical: 4,
                           ),
                           decoration: BoxDecoration(
-                            color: AppColors.primary.withValues(alpha: 0.15),
-                            borderRadius: BorderRadius.circular(8),
+                            color: AppColors.primary.withValues(alpha: 0.1),
+                            borderRadius: BorderRadius.circular(6),
                           ),
                           child: Text(
                             project.categoryLabel,
@@ -98,30 +100,26 @@ class ProjectDetailDialog extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const SizedBox(width: 8),
                         ...project.platforms.map(
-                          (p) => Padding(
-                            padding: const EdgeInsets.only(right: 6),
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                                vertical: 4,
-                              ),
-                              decoration: BoxDecoration(
+                          (p) => Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 4,
+                            ),
+                            decoration: BoxDecoration(
+                              color: isDark
+                                  ? AppColors.cardDarkHover
+                                  : const Color(0xFFF1F5F9),
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            child: Text(
+                              p,
+                              style: TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w600,
                                 color: isDark
-                                    ? AppColors.cardDarkHover
-                                    : const Color(0xFFF1F5F9),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Text(
-                                p,
-                                style: TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w600,
-                                  color: isDark
-                                      ? AppColors.textSecondaryDark
-                                      : AppColors.textSecondaryLight,
-                                ),
+                                    ? AppColors.textSecondaryDark
+                                    : AppColors.textSecondaryLight,
                               ),
                             ),
                           ),
@@ -132,7 +130,7 @@ class ProjectDetailDialog extends StatelessWidget {
                     Text(
                       project.title,
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 22,
                         fontWeight: FontWeight.w800,
                         color: isDark
                             ? AppColors.textPrimaryDark
@@ -143,37 +141,37 @@ class ProjectDetailDialog extends StatelessWidget {
                     Text(
                       project.description,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 13,
                         height: 1.5,
                         color: isDark
                             ? AppColors.textSecondaryDark
                             : AppColors.textSecondaryLight,
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 16),
                     Text(
                       'Key Architecture & Features:',
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 14,
                         fontWeight: FontWeight.w700,
                         color: isDark
                             ? AppColors.textPrimaryDark
                             : AppColors.textPrimaryLight,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 8),
                     ...project.keyFeatures.map(
                       (f) => Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
+                        padding: const EdgeInsets.only(bottom: 6),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Padding(
-                              padding: EdgeInsets.only(top: 4, right: 10),
+                              padding: EdgeInsets.only(top: 3, right: 8),
                               child: Icon(
                                 Icons.check_circle_rounded,
-                                size: 16,
-                                color: AppColors.accent,
+                                size: 15,
+                                color: AppColors.primary,
                               ),
                             ),
                             Expanded(
@@ -191,44 +189,44 @@ class ProjectDetailDialog extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 16),
                     Text(
                       context.l10n.techStack,
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 14,
                         fontWeight: FontWeight.w700,
                         color: isDark
                             ? AppColors.textPrimaryDark
                             : AppColors.textPrimaryLight,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 8),
                     Wrap(
-                      spacing: 8,
-                      runSpacing: 8,
+                      spacing: 6,
+                      runSpacing: 6,
                       children: project.technologies.map((t) {
                         return SkillChip(label: t);
                       }).toList(),
                     ),
-                    const SizedBox(height: 24),
-                    // Action Buttons
-                    Row(
+                    const SizedBox(height: 20),
+                    // Action Buttons (Wrap guarantees no overflow)
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
                         if (project.playStoreUrl != null)
                           ElevatedButton.icon(
                             onPressed: () => _openLink(project.playStoreUrl!),
-                            icon: const Icon(Icons.shop_rounded, size: 18),
+                            icon: const Icon(Icons.shop_rounded, size: 16),
                             label: const Text('Google Play'),
                           ),
-                        if (project.demoUrl != null) ...[
-                          const SizedBox(width: 10),
+                        if (project.demoUrl != null)
                           ElevatedButton.icon(
                             onPressed: () => _openLink(project.demoUrl!),
-                            icon: const Icon(Icons.download_rounded, size: 18),
-                            label: const Text('Download App / Demo'),
+                            icon: const Icon(Icons.download_rounded, size: 16),
+                            label: const Text('Download Demo'),
                           ),
-                        ],
-                        const Spacer(),
                         TextButton(
                           onPressed: () => Navigator.of(context).pop(),
                           child: const Text('Close'),

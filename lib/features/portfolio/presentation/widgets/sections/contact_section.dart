@@ -23,27 +23,25 @@ class ContactSection extends StatelessWidget {
           tablet: 36.0,
           desktop: 64.0,
         ),
-        vertical: 48,
+        vertical: 40,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Section Title
           _buildSectionHeader(context, isDark),
-          const SizedBox(height: 32),
-          // Form & Quick Links
+          const SizedBox(height: 28),
           if (isDesktop)
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(flex: 5, child: ContactInfoTiles(profile: profile)),
-                const SizedBox(width: 48),
+                const SizedBox(width: 40),
                 Expanded(flex: 6, child: ContactFormCard(profile: profile)),
               ],
             )
           else ...[
             ContactInfoTiles(profile: profile),
-            const SizedBox(height: 32),
+            const SizedBox(height: 24),
             ContactFormCard(profile: profile),
           ],
         ],
@@ -58,37 +56,37 @@ class ContactSection extends StatelessWidget {
         Row(
           children: [
             Container(
-              width: 32,
+              width: 24,
               height: 3,
               decoration: BoxDecoration(
-                gradient: AppColors.primaryGradient,
+                color: AppColors.primary,
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 8),
             Text(
               context.l10n.navContact.toUpperCase(),
               style: const TextStyle(
-                fontSize: 14,
+                fontSize: 13,
                 fontWeight: FontWeight.w700,
                 color: AppColors.primary,
-                letterSpacing: 1.5,
+                letterSpacing: 1.2,
               ),
             ),
           ],
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 6),
         Text(
           context.l10n.contactTitle,
           style: TextStyle(
-            fontSize: 26,
+            fontSize: 24,
             fontWeight: FontWeight.w800,
             color: isDark
                 ? AppColors.textPrimaryDark
                 : AppColors.textPrimaryLight,
           ),
         ),
-        const SizedBox(height: 6),
+        const SizedBox(height: 4),
         Text(
           context.l10n.contactSubtitle,
           style: TextStyle(

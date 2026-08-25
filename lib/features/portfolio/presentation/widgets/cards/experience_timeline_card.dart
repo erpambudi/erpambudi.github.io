@@ -42,102 +42,98 @@ class _ExperienceTimelineCardState extends State<ExperienceTimelineCard> {
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        margin: const EdgeInsets.only(bottom: 24),
-        padding: const EdgeInsets.all(24),
+        duration: const Duration(milliseconds: 180),
+        margin: const EdgeInsets.only(bottom: 20),
+        padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: isDark ? AppColors.cardDark : AppColors.surfaceLight,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: _isHovered
-                ? AppColors.primary.withValues(alpha: 0.6)
+                ? AppColors.primary.withValues(alpha: 0.5)
                 : (isDark ? AppColors.borderDark : AppColors.borderLight),
-            width: _isHovered ? 1.5 : 1.0,
           ),
           boxShadow: [
             BoxShadow(
-              color: _isHovered
-                  ? AppColors.primary.withValues(alpha: 0.15)
-                  : Colors.black.withValues(alpha: isDark ? 0.2 : 0.03),
-              blurRadius: _isHovered ? 16 : 8,
-              offset: const Offset(0, 4),
+              color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.03),
+              blurRadius: _isHovered ? 12 : 6,
+              offset: const Offset(0, 2),
             ),
           ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            // Responsive Header (Wrap prevents overflow on small screens)
+            Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              spacing: 12,
+              runSpacing: 8,
               children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Flexible(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      spacing: 8,
+                      runSpacing: 4,
+                      children: [
+                        Text(
+                          exp.role,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: isDark
+                                ? AppColors.textPrimaryDark
+                                : AppColors.textPrimaryLight,
+                          ),
+                        ),
+                        if (exp.isCurrent)
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 2,
+                            ),
+                            decoration: BoxDecoration(
+                              color: AppColors.primary.withValues(alpha: 0.1),
+                              borderRadius: BorderRadius.circular(6),
+                              border: Border.all(
+                                color: AppColors.primary.withValues(alpha: 0.3),
+                              ),
+                            ),
                             child: Text(
-                              exp.role,
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w800,
-                                color: isDark
-                                    ? AppColors.textPrimaryDark
-                                    : AppColors.textPrimaryLight,
+                              context.l10n.present,
+                              style: const TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w700,
+                                color: AppColors.primary,
                               ),
                             ),
                           ),
-                          if (exp.isCurrent) ...[
-                            const SizedBox(width: 10),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                                vertical: 3,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppColors.accent.withValues(alpha: 0.15),
-                                borderRadius: BorderRadius.circular(6),
-                                border: Border.all(
-                                  color: AppColors.accent.withValues(
-                                    alpha: 0.4,
-                                  ),
-                                ),
-                              ),
-                              child: Text(
-                                context.l10n.present,
-                                style: const TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.accent,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ],
+                      ],
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      exp.company,
+                      style: const TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primary,
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        exp.company,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.primary,
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 10,
-                    vertical: 5,
+                    vertical: 4,
                   ),
                   decoration: BoxDecoration(
                     color: isDark
                         ? AppColors.cardDarkHover
                         : const Color(0xFFF1F5F9),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(6),
                   ),
                   child: Text(
                     exp.period,
@@ -157,24 +153,13 @@ class _ExperienceTimelineCardState extends State<ExperienceTimelineCard> {
               exp.description,
               style: TextStyle(
                 fontSize: 13,
-                fontWeight: FontWeight.w400,
+                height: 1.5,
                 color: isDark
                     ? AppColors.textSecondaryDark
                     : AppColors.textSecondaryLight,
               ),
             ),
-            const SizedBox(height: 14),
-            Text(
-              context.l10n.keyAchievements,
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w700,
-                color: isDark
-                    ? AppColors.textPrimaryDark
-                    : AppColors.textPrimaryLight,
-              ),
-            ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 12),
             ...exp.highlights.map((highlight) {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 6),
@@ -182,11 +167,11 @@ class _ExperienceTimelineCardState extends State<ExperienceTimelineCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Padding(
-                      padding: EdgeInsets.only(top: 5, right: 8),
+                      padding: EdgeInsets.only(top: 4, right: 8),
                       child: Icon(
-                        Icons.check_circle_rounded,
-                        size: 14,
-                        color: AppColors.secondary,
+                        Icons.arrow_right_rounded,
+                        size: 18,
+                        color: AppColors.primary,
                       ),
                     ),
                     Expanded(
@@ -205,7 +190,7 @@ class _ExperienceTimelineCardState extends State<ExperienceTimelineCard> {
                 ),
               );
             }),
-            const SizedBox(height: 14),
+            const SizedBox(height: 12),
             Wrap(
               spacing: 6,
               runSpacing: 6,
@@ -214,10 +199,10 @@ class _ExperienceTimelineCardState extends State<ExperienceTimelineCard> {
               }).toList(),
             ),
             if (exp.appUrl != null) ...[
-              const SizedBox(height: 14),
+              const SizedBox(height: 12),
               InkWell(
                 onTap: _openApp,
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(6),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4),
                   child: Row(
@@ -225,7 +210,7 @@ class _ExperienceTimelineCardState extends State<ExperienceTimelineCard> {
                     children: [
                       const Icon(
                         Icons.open_in_new_rounded,
-                        size: 15,
+                        size: 14,
                         color: AppColors.primary,
                       ),
                       const SizedBox(width: 6),

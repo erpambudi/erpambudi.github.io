@@ -21,27 +21,25 @@ class AboutSection extends StatelessWidget {
           tablet: 36.0,
           desktop: 64.0,
         ),
-        vertical: 48,
+        vertical: 40,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Section Title
           _buildSectionHeader(context, isDark),
-          const SizedBox(height: 32),
-          // Bio & Highlights
+          const SizedBox(height: 28),
           if (isDesktop)
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(flex: 6, child: _buildBioText(context, isDark)),
-                const SizedBox(width: 48),
+                const SizedBox(width: 40),
                 Expanded(flex: 5, child: _buildPillarsGrid(context, isDark)),
               ],
             )
           else ...[
             _buildBioText(context, isDark),
-            const SizedBox(height: 32),
+            const SizedBox(height: 28),
             _buildPillarsGrid(context, isDark),
           ],
         ],
@@ -56,30 +54,30 @@ class AboutSection extends StatelessWidget {
         Row(
           children: [
             Container(
-              width: 32,
+              width: 24,
               height: 3,
               decoration: BoxDecoration(
-                gradient: AppColors.primaryGradient,
+                color: AppColors.primary,
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 8),
             Text(
-              context.l10n.aboutTitle,
+              context.l10n.aboutTitle.toUpperCase(),
               style: const TextStyle(
-                fontSize: 14,
+                fontSize: 13,
                 fontWeight: FontWeight.w700,
                 color: AppColors.primary,
-                letterSpacing: 1.5,
+                letterSpacing: 1.2,
               ),
             ),
           ],
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 6),
         Text(
           context.l10n.aboutSubtitle,
           style: TextStyle(
-            fontSize: 26,
+            fontSize: 24,
             fontWeight: FontWeight.w800,
             color: isDark
                 ? AppColors.textPrimaryDark
@@ -97,38 +95,34 @@ class AboutSection extends StatelessWidget {
         Text(
           context.l10n.aboutBio,
           style: TextStyle(
-            fontSize: 15,
-            height: 1.8,
+            fontSize: 14,
+            height: 1.7,
             color: isDark
                 ? AppColors.textSecondaryDark
                 : AppColors.textSecondaryLight,
           ),
         ),
-        const SizedBox(height: 24),
-        // Quick info cards
+        const SizedBox(height: 20),
         Wrap(
-          spacing: 12,
-          runSpacing: 12,
+          spacing: 10,
+          runSpacing: 10,
           children: [
             _buildInfoTile(
               Icons.location_on_rounded,
               context.l10n.location,
               profile.location,
-              AppColors.primary,
               isDark,
             ),
             _buildInfoTile(
               Icons.email_rounded,
               context.l10n.emailLabel,
               profile.email,
-              AppColors.secondary,
               isDark,
             ),
             _buildInfoTile(
               Icons.phone_rounded,
               context.l10n.phoneLabel,
               profile.phone,
-              AppColors.accent,
               isDark,
             ),
           ],
@@ -141,14 +135,13 @@ class AboutSection extends StatelessWidget {
     IconData icon,
     String label,
     String value,
-    Color color,
     bool isDark,
   ) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       decoration: BoxDecoration(
         color: isDark ? AppColors.cardDark : AppColors.surfaceLight,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(10),
         border: Border.all(
           color: isDark ? AppColors.borderDark : AppColors.borderLight,
         ),
@@ -156,8 +149,8 @@ class AboutSection extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 18, color: color),
-          const SizedBox(width: 10),
+          Icon(icon, size: 16, color: AppColors.primary),
+          const SizedBox(width: 8),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
@@ -175,7 +168,7 @@ class AboutSection extends StatelessWidget {
               Text(
                 value,
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: 12,
                   fontWeight: FontWeight.w600,
                   color: isDark
                       ? AppColors.textPrimaryDark
@@ -195,36 +188,32 @@ class AboutSection extends StatelessWidget {
         'Clean & Scalable Code',
         'Applying Clean Architecture, SOLID principles, & BLoC state management for long-term maintainability.',
         Icons.architecture_rounded,
-        AppColors.primary,
       ),
       (
         'Omnichannel & Hardware',
         'Direct experience integrating ESC/POS Bluetooth printers, dynamic QRIS, & multi-marketplace chat.',
         Icons.devices_other_rounded,
-        AppColors.secondary,
       ),
       (
         'Offline-First & Resilient',
         'Architecting robust local persistence with Hive/SQLite & background sync.',
         Icons.sync_rounded,
-        AppColors.accent,
       ),
       (
         'Pixel Perfect & Responsive',
         'Crafting fluid UI/UX adapted for mobile, tablet, and desktop viewports.',
         Icons.auto_awesome_rounded,
-        AppColors.purple,
       ),
     ];
 
     return Column(
       children: pillars.map((p) {
         return Container(
-          margin: const EdgeInsets.only(bottom: 14),
-          padding: const EdgeInsets.all(16),
+          margin: const EdgeInsets.only(bottom: 12),
+          padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
             color: isDark ? AppColors.cardDark : AppColors.surfaceLight,
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: isDark ? AppColors.borderDark : AppColors.borderLight,
             ),
@@ -233,14 +222,14 @@ class AboutSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: p.$4.withValues(alpha: 0.12),
-                  borderRadius: BorderRadius.circular(10),
+                  color: AppColors.primary.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(8),
                 ),
-                child: Icon(p.$3, color: p.$4, size: 20),
+                child: Icon(p.$3, color: AppColors.primary, size: 18),
               ),
-              const SizedBox(width: 14),
+              const SizedBox(width: 12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -248,14 +237,14 @@ class AboutSection extends StatelessWidget {
                     Text(
                       p.$1,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 13,
                         fontWeight: FontWeight.w700,
                         color: isDark
                             ? AppColors.textPrimaryDark
                             : AppColors.textPrimaryLight,
                       ),
                     ),
-                    const SizedBox(height: 4),
+                    const SizedBox(height: 3),
                     Text(
                       p.$2,
                       style: TextStyle(

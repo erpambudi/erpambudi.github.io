@@ -25,10 +25,10 @@ class CertificateDetailDialog extends StatelessWidget {
       backgroundColor: isDark ? AppColors.cardDark : AppColors.surfaceLight,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       clipBehavior: Clip.antiAlias,
-      insetPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+      insetPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
       child: ConstrainedBox(
         constraints: BoxConstraints(
-          maxWidth: 600,
+          maxWidth: 580,
           maxHeight: size.height * 0.85,
         ),
         child: SingleChildScrollView(
@@ -52,6 +52,7 @@ class CertificateDetailDialog extends StatelessWidget {
                           child: Icon(
                             Icons.workspace_premium_rounded,
                             size: 60,
+                            color: AppColors.primary,
                           ),
                         ),
                       ),
@@ -81,7 +82,7 @@ class CertificateDetailDialog extends StatelessWidget {
                     Text(
                       certificate.title,
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 17,
                         fontWeight: FontWeight.w700,
                         color: isDark
                             ? AppColors.textPrimaryDark
@@ -107,15 +108,18 @@ class CertificateDetailDialog extends StatelessWidget {
                             : AppColors.textMutedLight,
                       ),
                     ),
-                    const SizedBox(height: 20),
-                    Row(
+                    const SizedBox(height: 18),
+                    // Action buttons with Wrap (never overflows)
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
                         ElevatedButton.icon(
                           onPressed: _verify,
                           icon: const Icon(Icons.verified_rounded, size: 16),
                           label: Text(context.l10n.verifyCredential),
                         ),
-                        const Spacer(),
                         TextButton(
                           onPressed: () => Navigator.of(context).pop(),
                           child: const Text('Close'),

@@ -41,27 +41,18 @@ class _SocialIconButtonState extends State<SocialIconButton> {
         onEnter: (_) => setState(() => _isHovered = true),
         onExit: (_) => setState(() => _isHovered = false),
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
+          duration: const Duration(milliseconds: 180),
           curve: Curves.easeInOut,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: _isHovered
-                ? activeColor.withValues(alpha: 0.15)
+                ? activeColor.withValues(alpha: 0.12)
                 : (isDark ? AppColors.cardDark : AppColors.surfaceLight),
             border: Border.all(
               color: _isHovered
                   ? activeColor
                   : (isDark ? AppColors.borderDark : AppColors.borderLight),
             ),
-            boxShadow: _isHovered
-                ? [
-                    BoxShadow(
-                      color: activeColor.withValues(alpha: 0.3),
-                      blurRadius: 10,
-                      spreadRadius: 2,
-                    ),
-                  ]
-                : null,
           ),
           child: IconButton(
             icon: Icon(

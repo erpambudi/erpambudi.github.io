@@ -15,15 +15,13 @@ class ThemeToggleButton extends StatelessWidget {
         return Tooltip(
           message: context.l10n.toggleTheme,
           child: InkWell(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(10),
             onTap: () => context.read<ThemeCubit>().toggleTheme(),
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
               decoration: BoxDecoration(
-                color: isDark
-                    ? AppColors.cardDark
-                    : AppColors.primaryLight.withValues(alpha: 0.2),
-                borderRadius: BorderRadius.circular(12),
+                color: isDark ? AppColors.cardDark : const Color(0xFFF1F5F9),
+                borderRadius: BorderRadius.circular(10),
                 border: Border.all(
                   color: isDark ? AppColors.borderDark : AppColors.borderLight,
                 ),
@@ -31,18 +29,10 @@ class ThemeToggleButton extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 300),
-                    transitionBuilder: (child, anim) =>
-                        RotationTransition(turns: anim, child: child),
-                    child: Icon(
-                      isDark
-                          ? Icons.dark_mode_rounded
-                          : Icons.light_mode_rounded,
-                      key: ValueKey(isDark),
-                      size: 18,
-                      color: isDark ? AppColors.amber : AppColors.primary,
-                    ),
+                  Icon(
+                    isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
+                    size: 16,
+                    color: isDark ? AppColors.primaryLight : AppColors.primary,
                   ),
                   const SizedBox(width: 6),
                   Text(
