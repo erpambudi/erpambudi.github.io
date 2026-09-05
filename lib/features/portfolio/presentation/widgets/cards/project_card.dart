@@ -87,6 +87,8 @@ class _ProjectCardState extends State<ProjectCard> {
                       child: Image.asset(
                         proj.imagePath,
                         fit: BoxFit.cover,
+                        cacheWidth: 400,
+                        cacheHeight: 340,
                         errorBuilder: (context, error, stackTrace) => Center(
                           child: Icon(
                             Icons.image_not_supported_rounded,

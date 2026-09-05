@@ -83,6 +83,8 @@ class _CertificateCardState extends State<CertificateCard> {
                   child: Image.asset(
                     cert.imagePath,
                     fit: BoxFit.cover,
+                    cacheWidth: 400,
+                    cacheHeight: 260,
                     errorBuilder: (_, error, stackTrace) => const Center(
                       child: Icon(
                         Icons.workspace_premium_rounded,
